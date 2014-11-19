@@ -34,8 +34,8 @@ RefreshControl
 ####其他
   	1.设置下拉改变状态的位置`enableInsetTop` 默认65.0
   	2.设置上拉改变状态的位置`enableInsetBottom` 默认65.0
-	4.下拉到指定位置自动刷新`autoRefreshTop`  默认NO
-	5.上拉到指定位置自动加载`autoRefreshBottom`  默认NO
+	3.下拉到指定位置自动刷新`autoRefreshTop`  默认NO
+	4.上拉到指定位置自动加载`autoRefreshBottom`  默认NO
 	
 
 
