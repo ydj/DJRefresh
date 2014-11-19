@@ -208,13 +208,14 @@
     if (direction==RefreshDirectionTop)
     {
         _refreshingDirection=RefreshingDirectionTop;
-        edge=UIEdgeInsetsMake(self.enableInsetTop, 0, 0, 0);
+        float topH=self.enableInsetTop<45?45:self.enableInsetTop;
+        edge=UIEdgeInsetsMake(topH, 0, 0, 0);///enableInsetTop
 
     }
     else if (direction==RefreshDirectionBottom)
     {
-        
-        edge=UIEdgeInsetsMake(0, 0, self.enableInsetBottom, 0);
+        float botomH=self.enableInsetBottom<45?45:self.enableInsetBottom;
+        edge=UIEdgeInsetsMake(0, 0, botomH, 0);///self.enableInsetBottom
         _refreshingDirection=RefreshingDirectionBottom;
 
     }
@@ -253,12 +254,14 @@
     
     if (direction==RefreshDirectionTop)
     {
-        point=CGPointMake(0, -self.enableInsetTop);
+        float topH=self.enableInsetTop<45?45:self.enableInsetTop;
+        point=CGPointMake(0, -topH);//enableInsetTop
     }
     else if (direction==RefreshDirectionBottom)
     {
         float height=MAX(self.scrollView.contentSize.height, self.scrollView.frame.size.height);
-        point=CGPointMake(0, height-self.scrollView.bounds.size.height+self.enableInsetBottom);
+        float bottomH=self.enableInsetBottom<45?45:self.enableInsetBottom;
+        point=CGPointMake(0, height-self.scrollView.bounds.size.height+bottomH);///enableInsetBottom
     }
     __weak typeof(self)weakSelf=self;
 
@@ -311,15 +314,17 @@
     
     if (!CGRectIsEmpty(self.scrollView.frame))
     {
+        float topOffsetY=self.enableInsetTop+45;
+
         if (self.topView==nil)
         {
             Class className=NSClassFromString(self.topClass);
             
-            _topView=[[className alloc] initWithFrame:CGRectMake(0, -100, self.scrollView.frame.size.width, self.enableInsetTop+35)];
+            _topView=[[className alloc] initWithFrame:CGRectMake(0, -topOffsetY, self.scrollView.frame.size.width, topOffsetY)];
             [self.scrollView addSubview:self.topView];
         }
         else{
-            _topView.frame=CGRectMake(0, -100, self.scrollView.frame.size.width, self.enableInsetTop+35);
+            _topView.frame=CGRectMake(0, -topOffsetY, self.scrollView.frame.size.width, topOffsetY);
             
             [_topView performSelector:@selector(resetLayoutSubViews)];
             //[_topView resetLayoutSubViews];
@@ -340,11 +345,11 @@
         {
             Class className=NSClassFromString(self.bottomClass);
 
-            _bottomView=[[className alloc] initWithFrame:CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+35)];
+            _bottomView=[[className alloc] initWithFrame:CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+45)];
             [self.scrollView addSubview:_bottomView];
         }
         else{
-            _bottomView.frame=CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+35);
+            _bottomView.frame=CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+45);
            
             [self.bottomView performSelector:@selector(resetLayoutSubViews)];
             //[self.bottomView resetLayoutSubViews];

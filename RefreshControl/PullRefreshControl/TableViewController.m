@@ -33,6 +33,7 @@
     
     
     _refreshControl=[[RefreshControl alloc] initWithScrollView:self.tableView delegate:self];
+    //_refreshControl.enableInsetTop=0;
     _refreshControl.topEnabled=YES;
     _refreshControl.bottomEnabled=YES;
     
