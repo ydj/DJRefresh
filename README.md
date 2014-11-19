@@ -1,7 +1,7 @@
 RefreshControl
 ==============
 
-[`RefreshControl`]('https://github.com/ydj/RefreshControl') 是一个下拉刷新，上拉加载更多的组件
+[RefreshControl]('https://github.com/ydj/RefreshControl') 是一个下拉刷新，上拉加载更多的组件
 系统支持`iOS6+`
 支持横竖屏切换，支持自定义下拉`View`和加载`View`，继承自`UIScrollView`的控件都可以使用
 
@@ -31,6 +31,12 @@ RefreshControl
  [_refresh registerClassForTopView:[RefreshView class]];
 ```
 
+####其他
+  	1.设置下拉改变状态的位置`enableInsetTop` 默认65.0
+  	2.设置上拉改变状态的位置`enableInsetBottom` 默认65.0
+	4.下拉到指定位置自动刷新`autoRefreshTop`  默认NO
+	5.上拉到指定位置自动加载`autoRefreshBottom`  默认NO
+	
 
 
 

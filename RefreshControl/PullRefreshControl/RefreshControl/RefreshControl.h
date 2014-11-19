@@ -55,9 +55,15 @@ typedef enum {
 ///上拉 状态改变的距离 默认65.0
 @property (nonatomic,assign)float enableInsetBottom;
 
-///是否开启自动刷新,下拉到enableInsetTop位置自动刷新
+/*
+ *是否开启自动刷新,下拉到enableInsetTop位置自动刷新
+  YES-开启，NO-不开启，默认是NO
+ */
 @property (nonatomic,assign)BOOL autoRefreshTop;
-///是否开启自动加载更多，上拉到enableInsetBottom位置自动加载跟多
+/*
+ * 是否开启自动加载更多，上拉到enableInsetBottom位置自动加载跟多
+   YES-开启，NO-不开启，默认是NO
+ */
 @property (nonatomic,assign)BOOL autoRefreshBottom;
 
 /**
