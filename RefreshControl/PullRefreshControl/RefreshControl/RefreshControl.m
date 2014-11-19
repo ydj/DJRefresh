@@ -105,14 +105,20 @@
         {
             if (_refreshingDirection==RefreshingDirectionNone)
             {
-                if( self.scrollView.decelerating && self.scrollView.dragging==NO  )//&&
-                {
+                if (self.autoRefreshTop) {
                     [self _engageRefreshDirection:RefreshDirectionTop];
                 }
                 else{
-                    ///
-                    [self _canEngageRefreshDirection:RefreshDirectionTop];
+                    if( self.scrollView.decelerating && self.scrollView.dragging==NO  )//&&
+                    {
+                        [self _engageRefreshDirection:RefreshDirectionTop];
+                    }
+                    else{
+                        ///
+                        [self _canEngageRefreshDirection:RefreshDirectionTop];
+                    }
                 }
+                
             }
             else{
                 
@@ -138,16 +144,19 @@
             {
                 if (_refreshingDirection==RefreshingDirectionNone)
                 {
-                    
-                    if(self.scrollView.decelerating && self.scrollView.dragging==NO  )
-                    {
+                    if(self.autoRefreshBottom){
                         [self _engageRefreshDirection:RefreshDirectionBottom];
                     }
                     else{
-                        [self _canEngageRefreshDirection:RefreshDirectionBottom];
+                        if(self.scrollView.decelerating && self.scrollView.dragging==NO  )
+                        {
+                            [self _engageRefreshDirection:RefreshDirectionBottom];
+                        }
+                        else{
+                            [self _canEngageRefreshDirection:RefreshDirectionBottom];
+                        }
                     }
-                     
-
+                   
                 }
                 
             }

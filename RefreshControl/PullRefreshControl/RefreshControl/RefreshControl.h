@@ -55,6 +55,11 @@ typedef enum {
 ///上拉 状态改变的距离 默认65.0
 @property (nonatomic,assign)float enableInsetBottom;
 
+///是否开启自动刷新,下拉到enableInsetTop位置自动刷新
+@property (nonatomic,assign)BOOL autoRefreshTop;
+///是否开启自动加载更多，上拉到enableInsetBottom位置自动加载跟多
+@property (nonatomic,assign)BOOL autoRefreshBottom;
+
 /**
  *	注册Top加载的view,view必须接受RefreshViewDelegate协议,默认是RefreshTopView
  *	@param topClass 类类型
