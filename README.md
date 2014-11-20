@@ -38,7 +38,8 @@ RefreshControl
 	4.上拉到指定位置自动加载`autoRefreshBottom`  默认NO
 	
 
-
+####协议
+RefreshControl 被许可在 MIT 协议下使用。查阅 LICENSE 文件来获得更多信息。
 
 
  
