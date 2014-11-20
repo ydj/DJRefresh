@@ -37,8 +37,8 @@
     _tableView.dataSource=self;
     [self.view addSubview:_tableView];
     
-    NSArray *t1=[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[t]-0-|" options:0 metrics:nil views:@{@"t":self.tableView}];
-    NSArray *t2=[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[t]-0-|" options:0 metrics:nil views:@{@"t":self.tableView}];
+    NSArray *t1=[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView":self.tableView}];
+    NSArray *t2=[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[tableView]-0-|" options:0 metrics:nil views:@{@"tableView":self.tableView}];
     
     [self.view addConstraints:t1];
     [self.view addConstraints:t2];
