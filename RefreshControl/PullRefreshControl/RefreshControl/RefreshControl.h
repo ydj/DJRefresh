@@ -1,5 +1,5 @@
 //
-//  PullRefreshManager.h
+//  RefreshControl.h
 //
 //  Copyright (c) 2014 YDJ ( https://github.com/ydj/RefreshControl )
 //
