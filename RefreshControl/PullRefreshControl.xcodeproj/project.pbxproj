@@ -13,7 +13,6 @@
 		5C2A9A0F1A07105900AD13F3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A9A0E1A07105900AD13F3 /* ViewController.m */; };
 		5C2A9A121A07105900AD13F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C2A9A101A07105900AD13F3 /* Main.storyboard */; };
 		5C2A9A141A07105900AD13F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C2A9A131A07105900AD13F3 /* Images.xcassets */; };
-		5C2A9A231A07105900AD13F3 /* PullRefreshControlTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A9A221A07105900AD13F3 /* PullRefreshControlTests.m */; };
 		5C3A5ABB1A08C70F00871916 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A5ABA1A08C70F00871916 /* CollectionViewController.m */; };
 		5C6266521A1E3B9C006608B3 /* pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6266511A1E3B9C006608B3 /* pull_refresh@3x.png */; };
 		5C6266541A1E3BA6006608B3 /* pull_loading@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6266531A1E3BA6006608B3 /* pull_loading@3x.png */; };
@@ -26,16 +25,6 @@
 		5CC52FDF1A0B0D48000E7E12 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC52FDE1A0B0D48000E7E12 /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		5C2A9A1D1A07105900AD13F3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5C2A99FB1A07105900AD13F3 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5C2A9A021A07105900AD13F3;
-			remoteInfo = PullRefreshControl;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		5C19D8221A09BB9C009A7E13 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5C2A9A031A07105900AD13F3 /* PullRefreshControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PullRefreshControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,9 +35,6 @@
 		5C2A9A0D1A07105900AD13F3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		5C2A9A0E1A07105900AD13F3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5C2A9A131A07105900AD13F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		5C2A9A1C1A07105900AD13F3 /* PullRefreshControlTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PullRefreshControlTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C2A9A211A07105900AD13F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C2A9A221A07105900AD13F3 /* PullRefreshControlTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PullRefreshControlTests.m; sourceTree = "<group>"; };
 		5C3A5AB91A08C70F00871916 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		5C3A5ABA1A08C70F00871916 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		5C485C0E1A09CD5500B3E089 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,13 +63,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C2A9A191A07105900AD13F3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -91,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				5C2A9A051A07105900AD13F3 /* PullRefreshControl */,
-				5C2A9A1F1A07105900AD13F3 /* PullRefreshControlTests */,
 				5C2A9A041A07105900AD13F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				5C2A9A031A07105900AD13F3 /* PullRefreshControl.app */,
-				5C2A9A1C1A07105900AD13F3 /* PullRefreshControlTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,23 +108,6 @@
 			children = (
 				5C2A9A071A07105900AD13F3 /* Info.plist */,
 				5C2A9A081A07105900AD13F3 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5C2A9A1F1A07105900AD13F3 /* PullRefreshControlTests */ = {
-			isa = PBXGroup;
-			children = (
-				5C2A9A221A07105900AD13F3 /* PullRefreshControlTests.m */,
-				5C2A9A201A07105900AD13F3 /* Supporting Files */,
-			);
-			path = PullRefreshControlTests;
-			sourceTree = "<group>";
-		};
-		5C2A9A201A07105900AD13F3 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5C2A9A211A07105900AD13F3 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -207,24 +167,6 @@
 			productReference = 5C2A9A031A07105900AD13F3 /* PullRefreshControl.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5C2A9A1B1A07105900AD13F3 /* PullRefreshControlTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5C2A9A291A07105900AD13F3 /* Build configuration list for PBXNativeTarget "PullRefreshControlTests" */;
-			buildPhases = (
-				5C2A9A181A07105900AD13F3 /* Sources */,
-				5C2A9A191A07105900AD13F3 /* Frameworks */,
-				5C2A9A1A1A07105900AD13F3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5C2A9A1E1A07105900AD13F3 /* PBXTargetDependency */,
-			);
-			name = PullRefreshControlTests;
-			productName = PullRefreshControlTests;
-			productReference = 5C2A9A1C1A07105900AD13F3 /* PullRefreshControlTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -232,14 +174,10 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = jingyoutimes;
+				ORGANIZATIONNAME = YDJ;
 				TargetAttributes = {
 					5C2A9A021A07105900AD13F3 = {
 						CreatedOnToolsVersion = 6.1;
-					};
-					5C2A9A1B1A07105900AD13F3 = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = 5C2A9A021A07105900AD13F3;
 					};
 				};
 			};
@@ -256,7 +194,6 @@
 			projectRoot = "";
 			targets = (
 				5C2A9A021A07105900AD13F3 /* PullRefreshControl */,
-				5C2A9A1B1A07105900AD13F3 /* PullRefreshControlTests */,
 			);
 		};
 /* End PBXProject section */
@@ -273,13 +210,6 @@
 				5C2A9A141A07105900AD13F3 /* Images.xcassets in Resources */,
 				5C6FCF7E1A1C4ADD00569D94 /* pull_loading@2x.png in Resources */,
 				5C19D81F1A09BB9A009A7E13 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5C2A9A1A1A07105900AD13F3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,23 +232,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C2A9A181A07105900AD13F3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5C2A9A231A07105900AD13F3 /* PullRefreshControlTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5C2A9A1E1A07105900AD13F3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5C2A9A021A07105900AD13F3 /* PullRefreshControl */;
-			targetProxy = 5C2A9A1D1A07105900AD13F3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5C19D8211A09BB9A009A7E13 /* InfoPlist.strings */ = {
@@ -440,40 +354,6 @@
 			};
 			name = Release;
 		};
-		5C2A9A2A1A07105900AD13F3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PullRefreshControlTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PullRefreshControl.app/PullRefreshControl";
-			};
-			name = Debug;
-		};
-		5C2A9A2B1A07105900AD13F3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = PullRefreshControlTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PullRefreshControl.app/PullRefreshControl";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -491,15 +371,6 @@
 			buildConfigurations = (
 				5C2A9A271A07105900AD13F3 /* Debug */,
 				5C2A9A281A07105900AD13F3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5C2A9A291A07105900AD13F3 /* Build configuration list for PBXNativeTarget "PullRefreshControlTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5C2A9A2A1A07105900AD13F3 /* Debug */,
-				5C2A9A2B1A07105900AD13F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

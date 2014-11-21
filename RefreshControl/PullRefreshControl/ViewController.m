@@ -3,7 +3,7 @@
 //  PullRefreshControl
 //
 //  Created by YDJ on 14/11/3.
-//  Copyright (c) 2014年 jingyoutimes. All rights reserved.
+//  Copyright (c) 2014年 YDJ. All rights reserved.
 //
 
 #import "ViewController.h"
