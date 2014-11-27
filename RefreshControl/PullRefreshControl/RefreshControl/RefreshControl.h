@@ -90,9 +90,9 @@ typedef enum {
 - (void)registerClassForTopView:(Class)topClass;
 /**
  *	注册Bottom加载的view,view必须接受RefreshViewDelegate协议,默认是RefreshBottomView
- *	@param topClass 类类型
+ *	@param bottomClass 类类型
  */
-- (void)registerClassForBottomView:(Class)topClass;
+- (void)registerClassForBottomView:(Class)bottomClass;
 
 
 ///开始
