@@ -11,6 +11,7 @@
 #import "CollectionViewController.h"
 #import "TableViewController.h"
 #import "RefreshView.h"
+#import "WebViewViewController.h"
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate,RefreshControlDelegate>
 
@@ -76,7 +77,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -93,6 +94,9 @@
     }
     else if (indexPath.row==1){
         cell.textLabel.text=@"collectionView";
+    }
+    else if (indexPath.row==2){
+        cell.textLabel.text=@"webView";
     }
     
     
@@ -117,6 +121,13 @@
         [self.navigationController pushViewController:cc animated:YES];
         
     }
+    else if (indexPath.row==2){
+        
+        WebViewViewController * webView=[[WebViewViewController alloc] init];
+        [self.navigationController pushViewController:webView animated:YES];
+        
+    }
+    
 }
 
 

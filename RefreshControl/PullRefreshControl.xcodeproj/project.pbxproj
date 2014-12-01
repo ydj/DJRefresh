@@ -22,6 +22,7 @@
 		5C6FCF8B1A1C4AEC00569D94 /* pull_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C6FCF841A1C4AEC00569D94 /* pull_refresh@2x.png */; };
 		5C6FCF8C1A1C4AEC00569D94 /* RefreshBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCF861A1C4AEC00569D94 /* RefreshBottomView.m */; };
 		5C6FCF8D1A1C4AEC00569D94 /* RefreshTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCF881A1C4AEC00569D94 /* RefreshTopView.m */; };
+		5C88CFF71A2C185B00BAA8E1 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88CFF51A2C185B00BAA8E1 /* WebViewViewController.m */; };
 		5CC52FDF1A0B0D48000E7E12 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC52FDE1A0B0D48000E7E12 /* TableViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,8 @@
 		5C6FCF871A1C4AEC00569D94 /* RefreshTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTopView.h; sourceTree = "<group>"; };
 		5C6FCF881A1C4AEC00569D94 /* RefreshTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTopView.m; sourceTree = "<group>"; };
 		5C6FCF891A1C4AEC00569D94 /* RefreshViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshViewDelegate.h; sourceTree = "<group>"; };
+		5C88CFF51A2C185B00BAA8E1 /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
+		5C88CFF61A2C185B00BAA8E1 /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
 		5CC52FDD1A0B0D48000E7E12 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		5CC52FDE1A0B0D48000E7E12 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +98,8 @@
 				5C3A5ABA1A08C70F00871916 /* CollectionViewController.m */,
 				5CC52FDD1A0B0D48000E7E12 /* TableViewController.h */,
 				5CC52FDE1A0B0D48000E7E12 /* TableViewController.m */,
+				5C88CFF61A2C185B00BAA8E1 /* WebViewViewController.h */,
+				5C88CFF51A2C185B00BAA8E1 /* WebViewViewController.m */,
 				5C19D8211A09BB9A009A7E13 /* InfoPlist.strings */,
 				5C2A9A101A07105900AD13F3 /* Main.storyboard */,
 				5C2A9A131A07105900AD13F3 /* Images.xcassets */,
@@ -222,6 +227,7 @@
 			files = (
 				5C6FCF7F1A1C4ADD00569D94 /* RefreshView.m in Sources */,
 				5C2A9A0F1A07105900AD13F3 /* ViewController.m in Sources */,
+				5C88CFF71A2C185B00BAA8E1 /* WebViewViewController.m in Sources */,
 				5CC52FDF1A0B0D48000E7E12 /* TableViewController.m in Sources */,
 				5C6FCF8D1A1C4AEC00569D94 /* RefreshTopView.m in Sources */,
 				5C6FCF8A1A1C4AEC00569D94 /* RefreshControl.m in Sources */,
