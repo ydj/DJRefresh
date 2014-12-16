@@ -1,10 +1,25 @@
 //
-//  PullRefreshManager.m
-//  PullRefreshControl
+//  RefreshControl.m
 //
-//  Created by YDJ on 14/11/3.
-//  Copyright (c) 2014年 jingyoutimes. All rights reserved.
+//  Copyright (c) 2014 YDJ ( https://github.com/ydj/RefreshControl )
 //
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in
+//  all copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+//  THE SOFTWARE.
 
 #import "RefreshControl.h"
 #import "RefreshTopView.h"
@@ -64,8 +79,8 @@
         self.enableInsetBottom=65.0;
         [_scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
         [_scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld|NSKeyValueObservingOptionPrior context:NULL];
-
-
+        
+        
         
     }
     
@@ -76,13 +91,13 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-   if([keyPath isEqual:@"contentSize"])
+    if([keyPath isEqual:@"contentSize"])
     {
         if (self.topEnabled)
         {
             [self initTopView];
         }
-
+        
         if (self.bottomEnabled)
         {
             [self initBottonView];
@@ -90,7 +105,9 @@
     }
     else if([keyPath isEqualToString:@"contentOffset"])
     {
-        [self _drogForChange:change];
+        if (_refreshingDirection==RefreshingDirectionNone) {
+            [self _drogForChange:change];
+        }
     }
     
     
@@ -98,67 +115,38 @@
 
 - (void)_drogForChange:(NSDictionary *)change
 {
-
-    if (self.topEnabled)
+    
+    if ( self.topEnabled && self.scrollView.contentOffset.y<0)
     {
         if(self.scrollView.contentOffset.y<-self.enableInsetTop)
         {
-            if (_refreshingDirection==RefreshingDirectionNone)
-            {
-                if( self.scrollView.decelerating && self.scrollView.dragging==NO  )//&&
-                {
-                    [self _engageRefreshDirection:RefreshDirectionTop];
-                }
-                else{
-                    ///
-                    [self _canEngageRefreshDirection:RefreshDirectionTop];
-                }
+            if (self.autoRefreshTop || ( self.scrollView.decelerating && self.scrollView.dragging==NO)) {
+                [self _engageRefreshDirection:RefreshDirectionTop];
             }
-            else{
-                
+            else {
+                [self _canEngageRefreshDirection:RefreshDirectionTop];
             }
-            
         }
-        else if(self.scrollView.contentOffset.y<0)
+        else
         {
-            if (_refreshingDirection==RefreshingDirectionNone)
-            {
-                [self _didDisengageRefreshDirection:RefreshDirectionTop];
-            }
-            
+            [self _didDisengageRefreshDirection:RefreshDirectionTop];
         }
     }
     
-    if (self.bottomEnabled)
+    if ( self.bottomEnabled && self.scrollView.contentOffset.y>0 )
     {
-        if (self.scrollView.contentOffset.y>0)
+        
+        if(self.scrollView.contentOffset.y>(self.scrollView.contentSize.height+self.enableInsetBottom-self.scrollView.bounds.size.height) )
         {
-            
-            if(self.scrollView.contentOffset.y>(self.scrollView.contentSize.height+self.enableInsetBottom-self.scrollView.bounds.size.height))
-            {
-                if (_refreshingDirection==RefreshingDirectionNone)
-                {
-                    
-                    if(self.scrollView.decelerating && self.scrollView.dragging==NO  )
-                    {
-                        [self _engageRefreshDirection:RefreshDirectionBottom];
-                    }
-                    else{
-                        [self _canEngageRefreshDirection:RefreshDirectionBottom];
-                    }
-                     
-
-                }
-                
+            if(self.autoRefreshBottom || (self.scrollView.decelerating && self.scrollView.dragging==NO)){
+                [self _engageRefreshDirection:RefreshDirectionBottom];
             }
             else{
-                if (_refreshingDirection==RefreshingDirectionNone)
-                {
-                    [self _didDisengageRefreshDirection:RefreshDirectionBottom];
-                }
+                [self _canEngageRefreshDirection:RefreshDirectionBottom];
             }
-            
-            
+        }
+        else {
+            [self _didDisengageRefreshDirection:RefreshDirectionBottom];
         }
         
     }
@@ -170,7 +158,7 @@
 
 - (void)_canEngageRefreshDirection:(RefreshDirection) direction
 {
-
+    
     
     if (direction==RefreshDirectionTop)
     {
@@ -186,7 +174,7 @@
 
 - (void)_didDisengageRefreshDirection:(RefreshDirection) direction
 {
-
+    
     if (direction==RefreshDirectionTop)
     {
         [self.topView performSelector:@selector(didDisengageRefresh)];
@@ -208,25 +196,26 @@
     if (direction==RefreshDirectionTop)
     {
         _refreshingDirection=RefreshingDirectionTop;
-        edge=UIEdgeInsetsMake(self.enableInsetTop, 0, 0, 0);
-
+        float topH=self.enableInsetTop<45?45:self.enableInsetTop;
+        edge=UIEdgeInsetsMake(topH, 0, 0, 0);///enableInsetTop
+        
     }
     else if (direction==RefreshDirectionBottom)
     {
-        
-        edge=UIEdgeInsetsMake(0, 0, self.enableInsetBottom, 0);
+        float botomH=self.enableInsetBottom<45?45:self.enableInsetBottom;
+        edge=UIEdgeInsetsMake(0, 0, botomH, 0);///self.enableInsetBottom
         _refreshingDirection=RefreshingDirectionBottom;
-
+        
     }
     _scrollView.contentInset=edge;
-
+    
     [self _didEngageRefreshDirection:direction];
-
+    
 }
 
 - (void)_didEngageRefreshDirection:(RefreshDirection) direction
 {
-
+    
     if (direction==RefreshDirectionTop)
     {
         [self.topView performSelector:@selector(startRefreshing)];
@@ -235,7 +224,7 @@
     else if (direction==RefreshDirectionBottom)
     {
         [self.bottomView performSelector:@selector(startRefreshing)];
-       // [self.bottomView startRefreshing];
+        // [self.bottomView startRefreshing];
     }
     
     if ([self.delegate respondsToSelector:@selector(refreshControl:didEngageRefreshDirection:)])
@@ -253,22 +242,24 @@
     
     if (direction==RefreshDirectionTop)
     {
-        point=CGPointMake(0, -self.enableInsetTop);
+        float topH=self.enableInsetTop<45?45:self.enableInsetTop;
+        point=CGPointMake(0, -topH);//enableInsetTop
     }
     else if (direction==RefreshDirectionBottom)
     {
         float height=MAX(self.scrollView.contentSize.height, self.scrollView.frame.size.height);
-        point=CGPointMake(0, height-self.scrollView.bounds.size.height+self.enableInsetBottom);
+        float bottomH=self.enableInsetBottom<45?45:self.enableInsetBottom;
+        point=CGPointMake(0, height-self.scrollView.bounds.size.height+bottomH);///enableInsetBottom
     }
     __weak typeof(self)weakSelf=self;
-
+    
     [_scrollView setContentOffset:point animated:YES];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         __strong typeof(self)strongSelf=weakSelf;
         [strongSelf _engageRefreshDirection:direction];
     });
     
-
+    
 }
 
 - (void)_finishRefreshingDirection1:(RefreshDirection)direction animation:(BOOL)animation
@@ -276,7 +267,7 @@
     [UIView animateWithDuration:0.25 animations:^{
         
         _scrollView.contentInset=UIEdgeInsetsZero;
-
+        
     } completion:^(BOOL finished) {
         
     }];
@@ -311,15 +302,17 @@
     
     if (!CGRectIsEmpty(self.scrollView.frame))
     {
+        float topOffsetY=self.enableInsetTop+45;
+        
         if (self.topView==nil)
         {
             Class className=NSClassFromString(self.topClass);
             
-            _topView=[[className alloc] initWithFrame:CGRectMake(0, -100, self.scrollView.frame.size.width, self.enableInsetTop+35)];
+            _topView=[[className alloc] initWithFrame:CGRectMake(0, -topOffsetY, self.scrollView.frame.size.width, topOffsetY)];
             [self.scrollView addSubview:self.topView];
         }
         else{
-            _topView.frame=CGRectMake(0, -100, self.scrollView.frame.size.width, self.enableInsetTop+35);
+            _topView.frame=CGRectMake(0, -topOffsetY, self.scrollView.frame.size.width, topOffsetY);
             
             [_topView performSelector:@selector(resetLayoutSubViews)];
             //[_topView resetLayoutSubViews];
@@ -339,19 +332,19 @@
         if (self.bottomView==nil)
         {
             Class className=NSClassFromString(self.bottomClass);
-
-            _bottomView=[[className alloc] initWithFrame:CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+35)];
+            
+            _bottomView=[[className alloc] initWithFrame:CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+45)];
             [self.scrollView addSubview:_bottomView];
         }
         else{
-            _bottomView.frame=CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+35);
-           
+            _bottomView.frame=CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+45);
+            
             [self.bottomView performSelector:@selector(resetLayoutSubViews)];
             //[self.bottomView resetLayoutSubViews];
         }
         
     }
-
+    
     
 }
 
@@ -406,10 +399,10 @@
 
 - (void)finishRefreshingDirection:(RefreshDirection)direction
 {
-   
+    
     [self _finishRefreshingDirection1:direction animation:YES];
     
- 
+    
 }
 
 
