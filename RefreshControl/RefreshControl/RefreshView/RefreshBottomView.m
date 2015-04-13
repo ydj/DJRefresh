@@ -112,7 +112,7 @@
     [self addConstraints:aList];
     /////////////
     NSLayoutConstraint * tLeft=[NSLayoutConstraint constraintWithItem:self.loadingLabel attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
-    NSLayoutConstraint * tTop=[NSLayoutConstraint constraintWithItem:self.loadingLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:0 constant:13];
+    NSLayoutConstraint * tTop=[NSLayoutConstraint constraintWithItem:self.loadingLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1 constant:0];
     NSLayoutConstraint * tRight=[NSLayoutConstraint constraintWithItem:self.loadingLabel attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeRight multiplier:1 constant:0];
     NSLayoutConstraint * tHeight=[NSLayoutConstraint constraintWithItem:self.loadingLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:0 constant:32];
     
