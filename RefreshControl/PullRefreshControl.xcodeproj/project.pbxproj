@@ -24,6 +24,7 @@
 		5CE2A3791A3FE1AB00C4B509 /* pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE2A3711A3FE1AB00C4B509 /* pull_refresh@3x.png */; };
 		5CE2A37A1A3FE1AB00C4B509 /* RefreshBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE2A3731A3FE1AB00C4B509 /* RefreshBottomView.m */; };
 		5CE2A37B1A3FE1AB00C4B509 /* RefreshTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE2A3751A3FE1AB00C4B509 /* RefreshTopView.m */; };
+		5CFD28A81B25AE01007BCD60 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CFD28A71B25AE01007BCD60 /* SearchTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		5CE2A3741A3FE1AB00C4B509 /* RefreshTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTopView.h; sourceTree = "<group>"; };
 		5CE2A3751A3FE1AB00C4B509 /* RefreshTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTopView.m; sourceTree = "<group>"; };
 		5CE2A3761A3FE1AB00C4B509 /* RefreshViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshViewDelegate.h; sourceTree = "<group>"; };
+		5CFD28A61B25AE01007BCD60 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
+		5CFD28A71B25AE01007BCD60 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 				5CC52FDE1A0B0D48000E7E12 /* TableViewController.m */,
 				5C88CFF61A2C185B00BAA8E1 /* WebViewViewController.h */,
 				5C88CFF51A2C185B00BAA8E1 /* WebViewViewController.m */,
+				5CFD28A61B25AE01007BCD60 /* SearchTableViewController.h */,
+				5CFD28A71B25AE01007BCD60 /* SearchTableViewController.m */,
 				5C19D8211A09BB9A009A7E13 /* InfoPlist.strings */,
 				5C2A9A101A07105900AD13F3 /* Main.storyboard */,
 				5C2A9A131A07105900AD13F3 /* Images.xcassets */,
@@ -235,6 +240,7 @@
 				5C2A9A091A07105900AD13F3 /* main.m in Sources */,
 				5C3A5ABB1A08C70F00871916 /* CollectionViewController.m in Sources */,
 				5CE2A37A1A3FE1AB00C4B509 /* RefreshBottomView.m in Sources */,
+				5CFD28A81B25AE01007BCD60 /* SearchTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
