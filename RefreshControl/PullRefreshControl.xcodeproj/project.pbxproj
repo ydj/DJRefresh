@@ -19,6 +19,7 @@
 		5C6FCF7F1A1C4ADD00569D94 /* RefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6FCF7D1A1C4ADD00569D94 /* RefreshView.m */; };
 		5C88CFF71A2C185B00BAA8E1 /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C88CFF51A2C185B00BAA8E1 /* WebViewViewController.m */; };
 		5CC52FDF1A0B0D48000E7E12 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC52FDE1A0B0D48000E7E12 /* TableViewController.m */; };
+		5CDE77161B2688FD009F63C2 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CDE77151B2688FD009F63C2 /* SearchViewController.m */; };
 		5CE2A3771A3FE1AB00C4B509 /* RefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE2A36E1A3FE1AB00C4B509 /* RefreshControl.m */; };
 		5CE2A3781A3FE1AB00C4B509 /* pull_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE2A3701A3FE1AB00C4B509 /* pull_refresh@2x.png */; };
 		5CE2A3791A3FE1AB00C4B509 /* pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CE2A3711A3FE1AB00C4B509 /* pull_refresh@3x.png */; };
@@ -48,6 +49,8 @@
 		5C88CFF61A2C185B00BAA8E1 /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
 		5CC52FDD1A0B0D48000E7E12 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		5CC52FDE1A0B0D48000E7E12 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		5CDE77141B2688FD009F63C2 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		5CDE77151B2688FD009F63C2 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		5CE2A36D1A3FE1AB00C4B509 /* RefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshControl.h; sourceTree = "<group>"; };
 		5CE2A36E1A3FE1AB00C4B509 /* RefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshControl.m; sourceTree = "<group>"; };
 		5CE2A3701A3FE1AB00C4B509 /* pull_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull_refresh@2x.png"; sourceTree = "<group>"; };
@@ -105,6 +108,8 @@
 				5C88CFF51A2C185B00BAA8E1 /* WebViewViewController.m */,
 				5CFD28A61B25AE01007BCD60 /* SearchTableViewController.h */,
 				5CFD28A71B25AE01007BCD60 /* SearchTableViewController.m */,
+				5CDE77141B2688FD009F63C2 /* SearchViewController.h */,
+				5CDE77151B2688FD009F63C2 /* SearchViewController.m */,
 				5C19D8211A09BB9A009A7E13 /* InfoPlist.strings */,
 				5C2A9A101A07105900AD13F3 /* Main.storyboard */,
 				5C2A9A131A07105900AD13F3 /* Images.xcassets */,
@@ -240,6 +245,7 @@
 				5C2A9A091A07105900AD13F3 /* main.m in Sources */,
 				5C3A5ABB1A08C70F00871916 /* CollectionViewController.m in Sources */,
 				5CE2A37A1A3FE1AB00C4B509 /* RefreshBottomView.m in Sources */,
+				5CDE77161B2688FD009F63C2 /* SearchViewController.m in Sources */,
 				5CFD28A81B25AE01007BCD60 /* SearchTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

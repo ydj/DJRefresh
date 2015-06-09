@@ -1,38 +1,40 @@
 //
-//  SearchTableViewController.m
+//  SearchViewController.m
 //  PullRefreshControl
 //
-//  Created by YuDejian on 15/6/8.
+//  Created by YuDejian on 15/6/9.
 //  Copyright (c) 2015年 YDJ. All rights reserved.
 //
 
-#import "SearchTableViewController.h"
+#import "SearchViewController.h"
 #import "RefreshControl.h"
 
 
-@interface SearchTableViewController ()<UITableViewDataSource,UITableViewDelegate,RefreshControlDelegate>
+@interface SearchViewController ()<UITableViewDataSource,UITableViewDelegate,RefreshControlDelegate>
 
 @property (nonatomic,strong)NSMutableArray *dataList;
 @property (nonatomic,weak)IBOutlet UITableView *tableView;
 @property (nonatomic,strong)RefreshControl *refreshController;
 
 @property (nonatomic,weak)IBOutlet UISearchBar *searchBar;
-
+@property (nonatomic,strong)UISearchDisplayController *searchController;
 
 @end
 
-@implementation SearchTableViewController
-
+@implementation SearchViewController
 
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    self.tableView.tableHeaderView=self.searchBar;
+    _searchController=[[UISearchDisplayController alloc] initWithSearchBar:self.searchBar contentsController:self];
+    _searchController.searchResultsDelegate=self;
+    _searchController.searchResultsDataSource=self;
+    
     
     _refreshController=[[RefreshControl alloc] initWithScrollView:self.tableView delegate:self];
     _refreshController.topEnabled=YES;
     _refreshController.bottomEnabled=YES;
- 
+    
     
 }
 
@@ -43,7 +45,6 @@
     });
     
 }
-
 
 - (NSMutableArray *)dataList{
     
@@ -56,7 +57,7 @@
 
 
 - (void)loadData{
-
+    
     if (_refreshController.refreshingDirection==RefreshingDirectionTop) {
         [self.dataList removeAllObjects];
     }
@@ -67,10 +68,10 @@
     
     if (_refreshController.refreshingDirection==RefreshingDirectionTop) {
         [_refreshController finishRefreshingDirection:RefreshDirectionTop];
-
+        
     }else{
         [_refreshController finishRefreshingDirection:RefreshDirectionBottom];
-
+        
     }
     
     [self.tableView reloadData];
@@ -85,13 +86,27 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-   
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    cell.textLabel.text=[NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    if (tableView==_searchController.searchResultsTableView) {
+        static NSString *cellIndentifier=@"cell_search";
+        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+        
+        if (!cell) {
+            cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIndentifier];
+        }
+        
+        cell.textLabel.text=[NSString stringWithFormat:@"%ld",(long)indexPath.row];
+        
+        return cell;
+    }else{
+        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"searchCell" forIndexPath:indexPath];
+        
+        cell.textLabel.text=[NSString stringWithFormat:@"%ld",(long)indexPath.row];
+        
+        return cell;
+    }
     
-    return cell;
-  
+    
     
 }
 
@@ -99,7 +114,6 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [self.view endEditing:YES];
 }
-
 
 
 

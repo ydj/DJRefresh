@@ -36,7 +36,7 @@
     
     [_webView loadRequest:req];
     
-    
+    ///这里指定webview的scrollView
     _refreshControl=[[RefreshControl alloc] initWithScrollView:_webView.scrollView delegate:self];
     _refreshControl.topEnabled=YES;
     

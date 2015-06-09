@@ -77,7 +77,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,7 +98,9 @@
     else if (indexPath.row==2){
         cell.textLabel.text=@"webView";
     }else if (indexPath.row==3){
-        cell.textLabel.text=@"searchTableView";
+        cell.textLabel.text=@"tableHeaderView";
+    }else if (indexPath.row==4){
+        cell.textLabel.text=@"other";
     }
     
     
@@ -129,7 +131,9 @@
         [self.navigationController pushViewController:webView animated:YES];
         
     }else if (indexPath.row==3){
-        [self performSegueWithIdentifier:@"pushToSearchVC" sender:indexPath];
+        [self performSegueWithIdentifier:@"pushToTableHeader" sender:indexPath];
+    }else if(indexPath.row==4){
+        [self performSegueWithIdentifier:@"pushToSearchViewController" sender:indexPath];
     }
     
 }
