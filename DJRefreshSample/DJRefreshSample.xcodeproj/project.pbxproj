@@ -7,39 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5CB0E61B1B3B03580029691D /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0E61A1B3B03580029691D /* SampleViewController.m */; };
+		5CB0E6231B3B06D60029691D /* pull_loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB0E61D1B3B06D60029691D /* pull_loading@2x.png */; };
+		5CB0E6241B3B06D60029691D /* pull_loading@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB0E61E1B3B06D60029691D /* pull_loading@3x.png */; };
+		5CB0E6251B3B06D60029691D /* pull_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB0E61F1B3B06D60029691D /* pull_refresh@2x.png */; };
+		5CB0E6261B3B06D60029691D /* pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB0E6201B3B06D60029691D /* pull_refresh@3x.png */; };
+		5CB0E6271B3B06D60029691D /* SampleRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0E6221B3B06D60029691D /* SampleRefreshView.m */; };
+		5CB0E62A1B3B0AEF0029691D /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0E6291B3B0AEF0029691D /* TableViewController.m */; };
 		5CCB0DE71B3AFD980046536B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0DE61B3AFD980046536B /* main.m */; };
 		5CCB0DEA1B3AFD980046536B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0DE91B3AFD980046536B /* AppDelegate.m */; };
-		5CCB0DED1B3AFD980046536B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0DEC1B3AFD980046536B /* ViewController.m */; };
 		5CCB0DF01B3AFD980046536B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCB0DEE1B3AFD980046536B /* Main.storyboard */; };
 		5CCB0DF21B3AFD980046536B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCB0DF11B3AFD980046536B /* Images.xcassets */; };
 		5CCB0DF51B3AFD980046536B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CCB0DF31B3AFD980046536B /* LaunchScreen.xib */; };
-		5CCB0E011B3AFD990046536B /* DJRefreshSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0E001B3AFD990046536B /* DJRefreshSampleTests.m */; };
+		5CCB0E151B3AFF0D0046536B /* DJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0E0C1B3AFF0D0046536B /* DJRefresh.m */; };
+		5CCB0E161B3AFF0D0046536B /* DJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5CCB0E0E1B3AFF0D0046536B /* DJRefresh.bundle */; };
+		5CCB0E171B3AFF0D0046536B /* DJRefreshBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0E101B3AFF0D0046536B /* DJRefreshBottomView.m */; };
+		5CCB0E181B3AFF0D0046536B /* DJRefreshTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0E121B3AFF0D0046536B /* DJRefreshTopView.m */; };
+		5CCB0E191B3AFF0D0046536B /* DJRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0E141B3AFF0D0046536B /* DJRefreshView.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		5CCB0DFB1B3AFD990046536B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5CCB0DD91B3AFD980046536B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5CCB0DE01B3AFD980046536B;
-			remoteInfo = DJRefreshSample;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		5CB0E6191B3B03580029691D /* SampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleViewController.h; sourceTree = "<group>"; };
+		5CB0E61A1B3B03580029691D /* SampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
+		5CB0E61D1B3B06D60029691D /* pull_loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull_loading@2x.png"; sourceTree = "<group>"; };
+		5CB0E61E1B3B06D60029691D /* pull_loading@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull_loading@3x.png"; sourceTree = "<group>"; };
+		5CB0E61F1B3B06D60029691D /* pull_refresh@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull_refresh@2x.png"; sourceTree = "<group>"; };
+		5CB0E6201B3B06D60029691D /* pull_refresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull_refresh@3x.png"; sourceTree = "<group>"; };
+		5CB0E6211B3B06D60029691D /* SampleRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleRefreshView.h; sourceTree = "<group>"; };
+		5CB0E6221B3B06D60029691D /* SampleRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleRefreshView.m; sourceTree = "<group>"; };
+		5CB0E6281B3B0AEF0029691D /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		5CB0E6291B3B0AEF0029691D /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		5CCB0DE11B3AFD980046536B /* DJRefreshSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DJRefreshSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCB0DE51B3AFD980046536B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CCB0DE61B3AFD980046536B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5CCB0DE81B3AFD980046536B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5CCB0DE91B3AFD980046536B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5CCB0DEB1B3AFD980046536B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5CCB0DEC1B3AFD980046536B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5CCB0DEF1B3AFD980046536B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5CCB0DF11B3AFD980046536B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5CCB0DF41B3AFD980046536B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		5CCB0DFA1B3AFD990046536B /* DJRefreshSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DJRefreshSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CCB0DFF1B3AFD990046536B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5CCB0E001B3AFD990046536B /* DJRefreshSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DJRefreshSampleTests.m; sourceTree = "<group>"; };
+		5CCB0E0B1B3AFF0D0046536B /* DJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefresh.h; sourceTree = "<group>"; };
+		5CCB0E0C1B3AFF0D0046536B /* DJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefresh.m; sourceTree = "<group>"; };
+		5CCB0E0E1B3AFF0D0046536B /* DJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DJRefresh.bundle; sourceTree = "<group>"; };
+		5CCB0E0F1B3AFF0D0046536B /* DJRefreshBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshBottomView.h; sourceTree = "<group>"; };
+		5CCB0E101B3AFF0D0046536B /* DJRefreshBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshBottomView.m; sourceTree = "<group>"; };
+		5CCB0E111B3AFF0D0046536B /* DJRefreshTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshTopView.h; sourceTree = "<group>"; };
+		5CCB0E121B3AFF0D0046536B /* DJRefreshTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshTopView.m; sourceTree = "<group>"; };
+		5CCB0E131B3AFF0D0046536B /* DJRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshView.h; sourceTree = "<group>"; };
+		5CCB0E141B3AFF0D0046536B /* DJRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,21 +64,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5CCB0DF71B3AFD990046536B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CB0E61C1B3B06D60029691D /* CustomRefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				5CB0E61D1B3B06D60029691D /* pull_loading@2x.png */,
+				5CB0E61E1B3B06D60029691D /* pull_loading@3x.png */,
+				5CB0E61F1B3B06D60029691D /* pull_refresh@2x.png */,
+				5CB0E6201B3B06D60029691D /* pull_refresh@3x.png */,
+				5CB0E6211B3B06D60029691D /* SampleRefreshView.h */,
+				5CB0E6221B3B06D60029691D /* SampleRefreshView.m */,
+			);
+			path = CustomRefreshView;
+			sourceTree = "<group>";
+		};
 		5CCB0DD81B3AFD980046536B = {
 			isa = PBXGroup;
 			children = (
 				5CCB0DE31B3AFD980046536B /* DJRefreshSample */,
-				5CCB0DFD1B3AFD990046536B /* DJRefreshSampleTests */,
 				5CCB0DE21B3AFD980046536B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				5CCB0DE11B3AFD980046536B /* DJRefreshSample.app */,
-				5CCB0DFA1B3AFD990046536B /* DJRefreshSampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,10 +99,14 @@
 		5CCB0DE31B3AFD980046536B /* DJRefreshSample */ = {
 			isa = PBXGroup;
 			children = (
+				5CCB0E0A1B3AFF0D0046536B /* DJRefresh */,
 				5CCB0DE81B3AFD980046536B /* AppDelegate.h */,
 				5CCB0DE91B3AFD980046536B /* AppDelegate.m */,
-				5CCB0DEB1B3AFD980046536B /* ViewController.h */,
-				5CCB0DEC1B3AFD980046536B /* ViewController.m */,
+				5CB0E61C1B3B06D60029691D /* CustomRefreshView */,
+				5CB0E6191B3B03580029691D /* SampleViewController.h */,
+				5CB0E61A1B3B03580029691D /* SampleViewController.m */,
+				5CB0E6281B3B0AEF0029691D /* TableViewController.h */,
+				5CB0E6291B3B0AEF0029691D /* TableViewController.m */,
 				5CCB0DEE1B3AFD980046536B /* Main.storyboard */,
 				5CCB0DF11B3AFD980046536B /* Images.xcassets */,
 				5CCB0DF31B3AFD980046536B /* LaunchScreen.xib */,
@@ -102,21 +124,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5CCB0DFD1B3AFD990046536B /* DJRefreshSampleTests */ = {
+		5CCB0E0A1B3AFF0D0046536B /* DJRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				5CCB0E001B3AFD990046536B /* DJRefreshSampleTests.m */,
-				5CCB0DFE1B3AFD990046536B /* Supporting Files */,
+				5CCB0E0B1B3AFF0D0046536B /* DJRefresh.h */,
+				5CCB0E0C1B3AFF0D0046536B /* DJRefresh.m */,
+				5CCB0E0D1B3AFF0D0046536B /* DJRefreshView */,
 			);
-			path = DJRefreshSampleTests;
+			name = DJRefresh;
+			path = ../../DJRefresh;
 			sourceTree = "<group>";
 		};
-		5CCB0DFE1B3AFD990046536B /* Supporting Files */ = {
+		5CCB0E0D1B3AFF0D0046536B /* DJRefreshView */ = {
 			isa = PBXGroup;
 			children = (
-				5CCB0DFF1B3AFD990046536B /* Info.plist */,
+				5CCB0E0E1B3AFF0D0046536B /* DJRefresh.bundle */,
+				5CCB0E131B3AFF0D0046536B /* DJRefreshView.h */,
+				5CCB0E141B3AFF0D0046536B /* DJRefreshView.m */,
+				5CCB0E111B3AFF0D0046536B /* DJRefreshTopView.h */,
+				5CCB0E121B3AFF0D0046536B /* DJRefreshTopView.m */,
+				5CCB0E0F1B3AFF0D0046536B /* DJRefreshBottomView.h */,
+				5CCB0E101B3AFF0D0046536B /* DJRefreshBottomView.m */,
 			);
-			name = "Supporting Files";
+			path = DJRefreshView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,24 +169,6 @@
 			productReference = 5CCB0DE11B3AFD980046536B /* DJRefreshSample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5CCB0DF91B3AFD990046536B /* DJRefreshSampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5CCB0E071B3AFD990046536B /* Build configuration list for PBXNativeTarget "DJRefreshSampleTests" */;
-			buildPhases = (
-				5CCB0DF61B3AFD990046536B /* Sources */,
-				5CCB0DF71B3AFD990046536B /* Frameworks */,
-				5CCB0DF81B3AFD990046536B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5CCB0DFC1B3AFD990046536B /* PBXTargetDependency */,
-			);
-			name = DJRefreshSampleTests;
-			productName = DJRefreshSampleTests;
-			productReference = 5CCB0DFA1B3AFD990046536B /* DJRefreshSampleTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -168,10 +180,6 @@
 				TargetAttributes = {
 					5CCB0DE01B3AFD980046536B = {
 						CreatedOnToolsVersion = 6.3.2;
-					};
-					5CCB0DF91B3AFD990046536B = {
-						CreatedOnToolsVersion = 6.3.2;
-						TestTargetID = 5CCB0DE01B3AFD980046536B;
 					};
 				};
 			};
@@ -189,7 +197,6 @@
 			projectRoot = "";
 			targets = (
 				5CCB0DE01B3AFD980046536B /* DJRefreshSample */,
-				5CCB0DF91B3AFD990046536B /* DJRefreshSampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -200,15 +207,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CCB0DF01B3AFD980046536B /* Main.storyboard in Resources */,
+				5CCB0E161B3AFF0D0046536B /* DJRefresh.bundle in Resources */,
+				5CB0E6251B3B06D60029691D /* pull_refresh@2x.png in Resources */,
+				5CB0E6231B3B06D60029691D /* pull_loading@2x.png in Resources */,
+				5CB0E6261B3B06D60029691D /* pull_refresh@3x.png in Resources */,
 				5CCB0DF51B3AFD980046536B /* LaunchScreen.xib in Resources */,
 				5CCB0DF21B3AFD980046536B /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5CCB0DF81B3AFD990046536B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				5CB0E6241B3B06D60029691D /* pull_loading@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,29 +224,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CCB0DED1B3AFD980046536B /* ViewController.m in Sources */,
+				5CCB0E181B3AFF0D0046536B /* DJRefreshTopView.m in Sources */,
+				5CCB0E171B3AFF0D0046536B /* DJRefreshBottomView.m in Sources */,
+				5CB0E6271B3B06D60029691D /* SampleRefreshView.m in Sources */,
+				5CB0E61B1B3B03580029691D /* SampleViewController.m in Sources */,
+				5CB0E62A1B3B0AEF0029691D /* TableViewController.m in Sources */,
 				5CCB0DEA1B3AFD980046536B /* AppDelegate.m in Sources */,
 				5CCB0DE71B3AFD980046536B /* main.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5CCB0DF61B3AFD990046536B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5CCB0E011B3AFD990046536B /* DJRefreshSampleTests.m in Sources */,
+				5CCB0E191B3AFF0D0046536B /* DJRefreshView.m in Sources */,
+				5CCB0E151B3AFF0D0046536B /* DJRefresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5CCB0DFC1B3AFD990046536B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5CCB0DE01B3AFD980046536B /* DJRefreshSample */;
-			targetProxy = 5CCB0DFB1B3AFD990046536B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5CCB0DEE1B3AFD980046536B /* Main.storyboard */ = {
@@ -299,7 +294,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -336,7 +331,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -363,40 +358,6 @@
 			};
 			name = Release;
 		};
-		5CCB0E081B3AFD990046536B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DJRefreshSampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DJRefreshSample.app/DJRefreshSample";
-			};
-			name = Debug;
-		};
-		5CCB0E091B3AFD990046536B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DJRefreshSampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DJRefreshSample.app/DJRefreshSample";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -416,14 +377,7 @@
 				5CCB0E061B3AFD990046536B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		5CCB0E071B3AFD990046536B /* Build configuration list for PBXNativeTarget "DJRefreshSampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5CCB0E081B3AFD990046536B /* Debug */,
-				5CCB0E091B3AFD990046536B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  TableViewController.h
 //  DJRefreshSample
 //
 //  Created by YDJ on 15/6/24.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface TableViewController : UIViewController
 
 @end
-

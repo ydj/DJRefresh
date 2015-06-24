@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>EC3BBD07-39DE-46D9-BF2E-E3614ACE0C68</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>DJRefreshSample</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>501B5A003C1085A500385EDEDB1AD0EA6DD2C8D6</key>
 		<string>github.com:ydj/RefreshControl.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>DJRefreshSample/DJRefreshSample.xcodeproj/project.xcworkspace</string>
+	<string>DJRefreshSample/DJRefreshSample.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>501B5A003C1085A500385EDEDB1AD0EA6DD2C8D6</key>
