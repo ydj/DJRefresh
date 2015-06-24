@@ -1,7 +1,7 @@
 //
 //  RefreshTopView.m
 //
-//  Copyright (c) 2014 YDJ ( https://github.com/ydj/RefreshControl )
+//  Copyright (c) 2014 YDJ ( https://github.com/ydj/DJRefresh )
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -88,13 +88,11 @@
 {
     self.backgroundColor=[UIColor colorWithRed:237.0/255.0 green:237.0/255.0 blue:237.0/255.0 alpha:237.0/255.0];
 
-    _activityIndicatorView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    _activityIndicatorView=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _activityIndicatorView.hidesWhenStopped=YES;
-    _activityIndicatorView.color=[UIColor orangeColor];
+//    _activityIndicatorView.color=[UIColor orangeColor];
     _activityIndicatorView.translatesAutoresizingMaskIntoConstraints=NO;
     [self addSubview:_activityIndicatorView];
-    
-   // [_activityIndicatorView startAnimating];
     
     NSLayoutConstraint * aBottom=[NSLayoutConstraint constraintWithItem:self.activityIndicatorView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1 constant:-10];
     NSLayoutConstraint * aRight=[NSLayoutConstraint constraintWithItem:self.activityIndicatorView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1 constant:-5];
@@ -107,7 +105,8 @@
     
     
     _imageView=[[UIImageView alloc] initWithFrame:CGRectZero];
-    _imageView.image=[UIImage imageNamed:@"pull_refresh.png"];
+    
+    _imageView.image=[UIImage imageNamed:@"DJRefresh.bundle/dj_arrow_down"];
     _imageView.translatesAutoresizingMaskIntoConstraints=NO;
     [self addSubview:_imageView];
     

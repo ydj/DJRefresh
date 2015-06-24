@@ -1,7 +1,7 @@
 //
-//  RefreshControl.h
+//  DJRefresh.h
 //
-//  Copyright (c) 2014 YDJ ( https://github.com/ydj/RefreshControl )
+//  Copyright (c) 2014 YDJ ( https://github.com/ydj/DJRefresh )
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -31,45 +31,54 @@
  * 当前refreshing状态
  */
 typedef enum {
-    RefreshingDirectionNone    = 0,
-    RefreshingDirectionTop     = 1 << 0,
-    RefreshingDirectionBottom  = 1 << 1
-} RefreshingDirections;
+    DJRefreshingDirectionNone    = 0,
+    DJRefreshingDirectionTop     = 1 << 0,
+    DJRefreshingDirectionBottom  = 1 << 1
+} DJRefreshingDirections;
 
 /**
  *  指定回调方向
  */
 typedef enum {
-    RefreshDirectionTop = 0,
-    RefreshDirectionBottom
-} RefreshDirection;
+    DJRefreshDirectionTop = 0,
+    DJRefreshDirectionBottom
+} DJRefreshDirection;
 
+@class DJRefresh;
+typedef void(^DJRefreshCompletionBlock)(DJRefresh * refresh,DJRefreshDirection direction,NSDictionary *info);
 
-@protocol RefreshControlDelegate;
+@protocol DJRefreshDelegate;
 
 
 /**
- *	下拉刷新-上拉加载更多
+ *	刷新组件
  */
-@interface RefreshControl : NSObject
+@interface DJRefresh : NSObject
 
-///当前的状态
-@property (nonatomic,assign,readonly)RefreshingDirections refreshingDirection;
+/**当前的状态*/
+@property (nonatomic,assign,readonly)DJRefreshingDirections refreshingDirection;
 
 @property (nonatomic,readonly)UIScrollView * scrollView;
 
+@property (nonatomic,weak)id<DJRefreshDelegate>delegate;
 
-- (instancetype)initWithScrollView:(UIScrollView *)scrollView delegate:(id<RefreshControlDelegate>)delegate;
++ (instancetype)refreshWithScrollView:(UIScrollView *)scrollView;
 
+- (instancetype)initWithScrollView:(UIScrollView *)scrollView delegate:(id<DJRefreshDelegate>)delegate;
 
-///是否开启下拉刷新，YES-开启 NO-不开启 默认是NO
+- (instancetype)initWithScrollView:(UIScrollView *)scrollView;
+
+/**设置回调Block*/
+- (void)didRefreshCompletionBlock:(DJRefreshCompletionBlock)completionBlock;
+
+/**是否开启下拉刷新，YES-开启 NO-不开启 默认是NO*/
 @property (nonatomic,assign)BOOL topEnabled;
-///是否开启上拉加载更多，YES-开启 NO-不开启 默认是NO
+/**是否开启上拉加载更多，YES-开启 NO-不开启 默认是NO*/
 @property (nonatomic,assign)BOOL bottomEnabled;
 
-///下拉刷新 状态改变的距离 默认65.0
+/**下拉刷新 状态改变的距离 默认65.0*/
 @property (nonatomic,assign)float enableInsetTop;
-///上拉 状态改变的距离 默认65.0
+/**上拉 状态改变的距离 默认65.0*/
 @property (nonatomic,assign)float enableInsetBottom;
 
 /*
@@ -84,23 +93,37 @@ typedef enum {
 @property (nonatomic,assign)BOOL autoRefreshBottom;
 
 /**
- *	注册Top加载的view,view必须接受RefreshViewDelegate协议,默认是RefreshTopView
+ *	自定义TopView,注册Top加载的view,view必须继承DJRefreshView类
  *	@param topClass 类类型
  */
 - (void)registerClassForTopView:(Class)topClass;
 /**
- *	注册Bottom加载的view,view必须接受RefreshViewDelegate协议,默认是RefreshBottomView
+ *	自定义Bottom,注册Bottom加载的view,view必须继承DJRefreshView类
  *	@param bottomClass 类类型
  */
 - (void)registerClassForBottomView:(Class)bottomClass;
 
 
 ///开始
-- (void)startRefreshingDirection:(RefreshDirection)direction;
+- (void)startDJRefreshingDirection:(DJRefreshDirection)direction;
 
 ///完成
-- (void)finishRefreshingDirection:(RefreshDirection)direction;
+- (void)finishDJRefreshingDirection:(DJRefreshDirection)direction;
 
+
+/**
+ *	启动刷新
+ *	@param direction 方向
+ *  @param animation 是否动画
+ */
+- (void)startDJRefreshingDirection:(DJRefreshDirection)direction animation:(BOOL)animation;
+
+/**
+ *	完成刷新
+ *	@param direction 方向
+ *  @param animation 是否动画
+ */
+- (void)finishDJRefreshingDirection:(DJRefreshDirection)direction animation:(BOOL)animation;
 
 @end
 
@@ -108,11 +131,11 @@ typedef enum {
 /**
  *	代理方法
  */
-@protocol RefreshControlDelegate <NSObject>
+@protocol DJRefreshDelegate <NSObject>
 
 
 @optional
-- (void)refreshControl:(RefreshControl *)refreshControl didEngageRefreshDirection:(RefreshDirection) direction;
+- (void)refreshControl:(DJRefresh *)refreshControl didEngageDJRefreshDirection:(DJRefreshDirection) direction;
 
 
 

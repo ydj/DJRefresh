@@ -1,6 +1,6 @@
 //
 //  CollectionViewController.m
-//  PullRefreshControl
+//  PullDJRefresh
 //
 //  Created by YDJ on 14/11/4.
 //  Copyright (c) 2014年 YDJ. All rights reserved.
@@ -8,13 +8,13 @@
 
 #import "CollectionViewController.h"
 
-#import "RefreshControl.h"
+#import "DJRefresh.h"
 
 
-@interface CollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,RefreshControlDelegate>
+@interface CollectionViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,DJRefreshDelegate>
 
 @property (nonatomic,strong)UICollectionView * collectionView;
-@property (nonatomic,strong)RefreshControl * refreshControl;
+@property (nonatomic,strong)DJRefresh * refreshControl;
 @property (nonatomic,strong)NSMutableArray * dataList;
 
 @end
@@ -60,17 +60,22 @@
     [self.view addConstraints:cv];
     
     
-    _refreshControl=[[RefreshControl alloc] initWithScrollView:_collectionView delegate:self];
+    _refreshControl=[[DJRefresh alloc] initWithScrollView:_collectionView delegate:self];
     _refreshControl.topEnabled=YES;
     
-    
+
     [self dataADD];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_refreshControl startDJRefreshingDirection:DJRefreshDirectionTop];
+    });
+
 }
 
-- (void)refreshControl:(RefreshControl *)refreshControl didEngageRefreshDirection:(RefreshDirection) direction
+- (void)refreshControl:(DJRefresh *)refreshControl didEngageDJRefreshDirection:(DJRefreshDirection) direction
 {
     
-    if (direction==RefreshDirectionTop)
+    if (direction==DJRefreshDirectionTop)
     {
         [self.dataList removeAllObjects];
         
@@ -90,8 +95,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+//    [self.refreshControl startDJRefreshingDirection:DJRefreshDirectionTop];
 
-    [self.refreshControl startRefreshingDirection:RefreshDirectionTop];
+
 }
 
 
@@ -109,13 +115,13 @@
     
     [self.collectionView reloadData];
     
-    if (self.refreshControl.refreshingDirection==RefreshingDirectionTop)
+    if (self.refreshControl.refreshingDirection==DJRefreshingDirectionTop)
     {
-        [self.refreshControl finishRefreshingDirection:RefreshDirectionTop];
+        [self.refreshControl finishDJRefreshingDirection:DJRefreshDirectionTop animation:NO];
     }
-    else if (self.refreshControl.refreshingDirection==RefreshingDirectionBottom)
+    else if (self.refreshControl.refreshingDirection==DJRefreshingDirectionBottom)
     {
-        [self.refreshControl finishRefreshingDirection:RefreshDirectionBottom];
+        [self.refreshControl finishDJRefreshingDirection:DJRefreshDirectionBottom animation:NO];
     }
     
     ///设置是否有下拉刷新

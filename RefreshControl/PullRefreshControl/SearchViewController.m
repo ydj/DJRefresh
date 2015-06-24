@@ -1,20 +1,20 @@
 //
 //  SearchViewController.m
-//  PullRefreshControl
+//  PullDJRefresh
 //
 //  Created by YuDejian on 15/6/9.
 //  Copyright (c) 2015年 YDJ. All rights reserved.
 //
 
 #import "SearchViewController.h"
-#import "RefreshControl.h"
+#import "DJRefresh.h"
 
 
-@interface SearchViewController ()<UITableViewDataSource,UITableViewDelegate,RefreshControlDelegate>
+@interface SearchViewController ()<UITableViewDataSource,UITableViewDelegate,DJRefreshDelegate>
 
 @property (nonatomic,strong)NSMutableArray *dataList;
 @property (nonatomic,weak)IBOutlet UITableView *tableView;
-@property (nonatomic,strong)RefreshControl *refreshController;
+@property (nonatomic,strong)DJRefresh *refreshController;
 
 @property (nonatomic,weak)IBOutlet UISearchBar *searchBar;
 @property (nonatomic,strong)UISearchDisplayController *searchController;
@@ -31,14 +31,14 @@
     _searchController.searchResultsDataSource=self;
     
     
-    _refreshController=[[RefreshControl alloc] initWithScrollView:self.tableView delegate:self];
+    _refreshController=[[DJRefresh alloc] initWithScrollView:self.tableView delegate:self];
     _refreshController.topEnabled=YES;
     _refreshController.bottomEnabled=YES;
     
     
 }
 
-- (void)refreshControl:(RefreshControl *)refreshControl didEngageRefreshDirection:(RefreshDirection)direction{
+- (void)refreshControl:(DJRefresh *)refreshControl didEngageDJRefreshDirection:(DJRefreshDirection)direction{
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self loadData];
@@ -58,7 +58,7 @@
 
 - (void)loadData{
     
-    if (_refreshController.refreshingDirection==RefreshingDirectionTop) {
+    if (_refreshController.refreshingDirection==DJRefreshingDirectionTop) {
         [self.dataList removeAllObjects];
     }
     
@@ -66,11 +66,11 @@
         [self.dataList addObject:@""];
     }
     
-    if (_refreshController.refreshingDirection==RefreshingDirectionTop) {
-        [_refreshController finishRefreshingDirection:RefreshDirectionTop];
+    if (_refreshController.refreshingDirection==DJRefreshingDirectionTop) {
+        [_refreshController finishDJRefreshingDirection:DJRefreshDirectionTop];
         
     }else{
-        [_refreshController finishRefreshingDirection:RefreshDirectionBottom];
+        [_refreshController finishDJRefreshingDirection:DJRefreshDirectionBottom];
         
     }
     

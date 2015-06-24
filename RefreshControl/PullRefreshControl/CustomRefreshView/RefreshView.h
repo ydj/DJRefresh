@@ -1,7 +1,7 @@
 //
 //  RefreshView.h
 //
-//  Copyright (c) 2014 YDJ ( https://github.com/ydj/RefreshControl )
+//  Copyright (c) 2014 YDJ ( https://github.com/ydj/DJRefresh )
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -25,16 +25,16 @@
 
 #import <UIKit/UIKit.h>
 #import "RefreshViewDelegate.h"
-
+#import "DJRefreshView.h"
 
 /**
  *	自定义view
  */
-@interface RefreshView : UIView<RefreshViewDelegate>
+@interface RefreshView : DJRefreshView
 
 @property (nonatomic,strong)UIImageView * imageView;
 
-- (void)resetLayoutSubViews;
+- (void)reset;
 
 - (void)canEngageRefresh;
 - (void)didDisengageRefresh;

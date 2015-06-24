@@ -1,22 +1,22 @@
 //
 //  ViewController.m
-//  PullRefreshControl
+//  PullDJRefresh
 //
 //  Created by YDJ on 14/11/3.
 //  Copyright (c) 2014年 YDJ. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "RefreshControl.h"
+#import "DJRefresh.h"
 #import "CollectionViewController.h"
 #import "TableViewController.h"
 #import "RefreshView.h"
 #import "WebViewViewController.h"
 
-@interface ViewController ()<UITableViewDataSource,UITableViewDelegate,RefreshControlDelegate>
+@interface ViewController ()<UITableViewDataSource,UITableViewDelegate,DJRefreshDelegate>
 
 @property (nonatomic,strong)UITableView * tableView;
-@property (nonatomic,strong)RefreshControl * refresh;
+@property (nonatomic,strong)DJRefresh * refresh;
 @end
 
 @implementation ViewController
@@ -26,7 +26,7 @@
 
     self.navigationController.navigationBar.translucent=NO;
 
-    self.title=@"RefreshControl";
+    self.title=@"DJRefresh";
     
     ///1334-750
     ///1242-2202
@@ -45,7 +45,7 @@
     [self.view addConstraints:t2];
 
     ///初始化
-    _refresh=[[RefreshControl alloc] initWithScrollView:self.tableView delegate:self];
+    _refresh=[[DJRefresh alloc] initWithScrollView:self.tableView delegate:self];
     ///设置显示下拉刷新
     _refresh.topEnabled=YES;
     ///注册自定义的下拉刷新view
@@ -56,13 +56,13 @@
 
 #pragma mark 刷新代理
 
-- (void)refreshControl:(RefreshControl *)refreshControl didEngageRefreshDirection:(RefreshDirection)direction
+- (void)refreshControl:(DJRefresh *)refreshControl didEngageDJRefreshDirection:(DJRefreshDirection)direction
 {
-    if (direction==RefreshDirectionTop)
+    if (direction==DJRefreshDirectionTop)
     {
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [refreshControl finishRefreshingDirection:RefreshDirectionTop];
+            [refreshControl finishDJRefreshingDirection:DJRefreshDirectionTop];
         });
         
         

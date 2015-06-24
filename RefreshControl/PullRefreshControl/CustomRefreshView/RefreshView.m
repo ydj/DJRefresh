@@ -1,7 +1,7 @@
 //
 //  RefreshView.m
 //
-//  Copyright (c) 2014 YDJ ( https://github.com/ydj/RefreshControl )
+//  Copyright (c) 2014 YDJ ( https://github.com/ydj/DJRefresh )
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -42,17 +42,18 @@
     self.backgroundColor=[UIColor colorWithRed:237.0/255.0 green:237.0/255.0 blue:237.0/255.0 alpha:237.0/255.0];
 
     _imageView=[[UIImageView alloc] initWithFrame:CGRectZero];
-    _imageView.image=[UIImage imageNamed:@"pull_refresh.png"];
+    _imageView.image=[UIImage imageNamed:@"pull_refresh"];
     _imageView.translatesAutoresizingMaskIntoConstraints=NO;
     [self addSubview:_imageView];
     
-    [self resetLayoutSubViews];
+    [self reset];
     
 }
 
 
-- (void)resetLayoutSubViews
+- (void)reset
 {
+    [super reset];
     
     NSArray * temp=self.constraints;
     if ([temp count]>0)
@@ -69,7 +70,7 @@
     
     [self addConstraints:list];
     
-    
+    [self resetViews];
 }
 
 
@@ -77,7 +78,7 @@
 {
     [UIView animateWithDuration:0.25 animations:^{
         _imageView.transform=CGAffineTransformIdentity;
-        _imageView.image=[UIImage imageNamed:@"pull_refresh.png"];
+        _imageView.image=[UIImage imageNamed:@"pull_refresh"];
     }];
     
 }
@@ -85,33 +86,37 @@
 
 - (void)canEngageRefresh
 {
+    [super canEngageRefresh];
+    
     [UIView animateWithDuration:0.25 animations:^{
         _imageView.transform=CGAffineTransformMakeRotation(M_PI);
     }];
     
 }
-- (void)didDisengageRefresh
-{
-    [self resetViews];
-}
+
 - (void)startRefreshing
 {
-    _imageView.image=[UIImage imageNamed:@"pull_loading@2x.png"];
+    [super startRefreshing];
+    
+    _imageView.image=[UIImage imageNamed:@"pull_loading"];
     
     CABasicAnimation* rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
     rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0 ];
-    rotationAnimation.duration = 0.3;
+    rotationAnimation.duration = 0.5;
     rotationAnimation.cumulative = YES;
-    rotationAnimation.repeatCount = CGFLOAT_MAX;
+//    rotationAnimation.repeatCount = CGFLOAT_MAX;
+    rotationAnimation.repeatDuration=INFINITY;
     
     [_imageView.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
     
 }
 - (void)finishRefreshing
 {
+    [super finishRefreshing];
+    
     [_imageView.layer removeAnimationForKey:@"rotationAnimation"];
     _imageView.transform=CGAffineTransformIdentity;
-    _imageView.image=[UIImage imageNamed:@"pull_refresh.png"];
+    _imageView.image=[UIImage imageNamed:@"pull_refresh"];
     
 }
 

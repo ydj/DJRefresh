@@ -1,6 +1,6 @@
 //
 //  WebViewViewController.m
-//  PullRefreshControl
+//  PullDJRefresh
 //
 //  Created by YDJ on 14/12/1.
 //  Copyright (c) 2014年 YDJ. All rights reserved.
@@ -8,10 +8,10 @@
 
 #import "WebViewViewController.h"
 
-@interface WebViewViewController ()<RefreshControlDelegate>
+@interface WebViewViewController ()<DJRefreshDelegate>
 
 @property (nonatomic,strong)UIWebView *webView;
-@property (nonatomic,strong)RefreshControl *refreshControl;
+@property (nonatomic,strong)DJRefresh *refreshControl;
 @end
 
 @implementation WebViewViewController
@@ -37,7 +37,7 @@
     [_webView loadRequest:req];
     
     ///这里指定webview的scrollView
-    _refreshControl=[[RefreshControl alloc] initWithScrollView:_webView.scrollView delegate:self];
+    _refreshControl=[[DJRefresh alloc] initWithScrollView:_webView.scrollView delegate:self];
     _refreshControl.topEnabled=YES;
     
     
@@ -45,12 +45,12 @@
 }
 
 
-- (void)refreshControl:(RefreshControl *)refreshControl didEngageRefreshDirection:(RefreshDirection) direction
+- (void)refreshControl:(DJRefresh *)refreshControl didEngageDJRefreshDirection:(DJRefreshDirection) direction
 {
-    if (direction==RefreshDirectionTop) {
+    if (direction==DJRefreshDirectionTop) {
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [_refreshControl finishRefreshingDirection:RefreshDirectionTop];
+            [_refreshControl finishDJRefreshingDirection:DJRefreshDirectionTop];
             
         });
         

@@ -1,6 +1,6 @@
 //
 //  TableViewController.m
-//  PullRefreshControl
+//  PullDJRefresh
 //
 //  Created by YDJ on 14/11/6.
 //  Copyright (c) 2014年 YDJ. All rights reserved.
@@ -8,11 +8,11 @@
 
 #import "TableViewController.h"
 
-@interface TableViewController ()<UITableViewDataSource,UITableViewDelegate,RefreshControlDelegate>
+@interface TableViewController ()<UITableViewDataSource,UITableViewDelegate,DJRefreshDelegate>
 
 @property (nonatomic,strong)NSMutableArray * dataList;
 
-@property (nonatomic,strong)RefreshControl * refreshControl;
+@property (nonatomic,strong)DJRefresh * refreshControl;
 
 @end
 
@@ -32,29 +32,55 @@
     }
     
     
-    _refreshControl=[[RefreshControl alloc] initWithScrollView:self.tableView delegate:self];
+    //_refreshControl=[[DJRefresh alloc] initWithScrollView:self.tableView delegate:self];
+    
+    self.refreshControl=[DJRefresh refreshWithScrollView:self.tableView];
+    
+    [self.refreshControl didRefreshCompletionBlock:^(DJRefresh *refresh, DJRefreshDirection direction, NSDictionary *info) {
+        
+        if (direction==DJRefreshDirectionTop)
+        {
+            
+            [self.dataList removeAllObjects];
+            
+        }
+        else if (direction==DJRefreshDirectionBottom)
+        {
+            
+        }        
+        __weak typeof(self)weakSelf=self;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            __strong typeof(weakSelf)strongSelf=weakSelf;
+            [strongSelf reloadData];
+        });
+        
+    }];
+    
     _refreshControl.topEnabled=YES;
     _refreshControl.bottomEnabled=YES;
     
     [self.tableView reloadData];
+    
+    [self.refreshControl startDJRefreshingDirection:DJRefreshDirectionTop animation:YES];
+
     
 }
 
 
 - (void)viewDidAppear:(BOOL)animated
 {
-   // [self.refreshControl startRefreshingDirection:RefreshDirectionTop];
+
 }
 
-- (void)refreshControl:(RefreshControl *)refreshControl didEngageRefreshDirection:(RefreshDirection)direction
+- (void)refreshControl:(DJRefresh *)refreshControl didEngageDJRefreshDirection:(DJRefreshDirection)direction
 {
-    if (direction==RefreshDirectionTop)
+    if (direction==DJRefreshDirectionTop)
     {
         
         [self.dataList removeAllObjects];
         
     }
-    else if (direction==RefreshDirectionBottom)
+    else if (direction==DJRefreshDirectionBottom)
     {
         
     }
@@ -79,13 +105,13 @@
     [self.tableView reloadData];
     
     
-    if (self.refreshControl.refreshingDirection==RefreshingDirectionTop)
+    if (self.refreshControl.refreshingDirection==DJRefreshingDirectionTop)
     {
-        [self.refreshControl finishRefreshingDirection:RefreshDirectionTop];
+        [self.refreshControl finishDJRefreshingDirection:DJRefreshDirectionTop];
     }
-    else if (self.refreshControl.refreshingDirection==RefreshingDirectionBottom)
+    else if (self.refreshControl.refreshingDirection==DJRefreshingDirectionBottom)
     {
-        [self.refreshControl finishRefreshingDirection:RefreshDirectionBottom];
+        [self.refreshControl finishDJRefreshingDirection:DJRefreshDirectionBottom];
 
     }
     

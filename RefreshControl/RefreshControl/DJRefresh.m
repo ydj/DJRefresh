@@ -1,7 +1,7 @@
 //
-//  RefreshControl.m
+//  DJRefresh.m
 //
-//  Copyright (c) 2014 YDJ ( https://github.com/ydj/RefreshControl )
+//  Copyright (c) 2014 YDJ ( https://github.com/ydj/DJRefresh )
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -21,72 +21,93 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "RefreshControl.h"
+#import "DJRefresh.h"
 #import "RefreshTopView.h"
 #import "RefreshBottomView.h"
 #import "RefreshViewDelegate.h"
+#import "DJRefreshView.h"
+#import "DJRefreshTopView.h"
+#import "DJRefreshBottomView.h"
+
+@interface DJRefresh ()
 
 
-@interface RefreshControl ()
-
-@property (nonatomic,weak)id<RefreshControlDelegate>delegate;
-
-@property (nonatomic,strong)UIView * topView;
-@property (nonatomic,strong)UIView * bottomView;
+@property (nonatomic,strong)DJRefreshView * topView;
+@property (nonatomic,strong)DJRefreshView * bottomView;
 
 @property (nonatomic,copy)NSString * topClass;
 @property (nonatomic,copy)NSString * bottomClass;
 
+@property (nonatomic,copy)DJRefreshCompletionBlock comBlock;
+
 @end
 
-@implementation RefreshControl
+@implementation DJRefresh
 
 
 - (void)registerClassForTopView:(Class)topClass
 {
-    if ([topClass conformsToProtocol:@protocol(RefreshViewDelegate)]) {
+    if ([topClass isSubclassOfClass:[DJRefreshView class]]) {
         self.topClass=NSStringFromClass([topClass class]);
     }
     else{
-        self.topClass=NSStringFromClass([RefreshTopView class]);
+        self.topClass=NSStringFromClass([DJRefreshTopView class]);
     }
 }
 - (void)registerClassForBottomView:(Class)bottomClass
 {
-    if ([bottomClass conformsToProtocol:@protocol(RefreshViewDelegate)]) {
+    if ([bottomClass isSubclassOfClass:[DJRefreshView class]]) {
         self.bottomClass=NSStringFromClass([bottomClass class]);
     }
     else{
-        self.bottomClass=NSStringFromClass([RefreshBottomView class]);
+        self.bottomClass=NSStringFromClass([DJRefreshBottomView class]);
     }
-    
     
 }
 
 
-- (instancetype)initWithScrollView:(UIScrollView *)scrollView delegate:(id<RefreshControlDelegate>)delegate
++ (instancetype)refreshWithScrollView:(UIScrollView *)scrollView{
+    __autoreleasing  DJRefresh *refresh=[[DJRefresh alloc] initWithScrollView:scrollView];
+    return refresh;
+}
+
+
+- (instancetype)initWithScrollView:(UIScrollView *)scrollView delegate:(id<DJRefreshDelegate>)delegate
 {
-    self=[super init];
-    if (self)
+    if (self=[super init])
     {
         _scrollView=scrollView;
         _delegate=delegate;
-        
-        _topClass=NSStringFromClass([RefreshTopView class]);
-        _bottomClass=NSStringFromClass([RefreshBottomView class]);
-        
-        self.enableInsetTop=65.0;
-        self.enableInsetBottom=65.0;
-        [_scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
-        [_scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld|NSKeyValueObservingOptionPrior context:NULL];
-        
-        
-        
+        [self setup];
     }
     
     return self;
 }
 
+- (instancetype)initWithScrollView:(UIScrollView *)scrollView{
+    if (self=[super init]) {
+        _scrollView=scrollView;
+        [self setup];
+    }
+    return self;
+}
+
+
+- (void)setup{
+    
+    _topClass=NSStringFromClass([DJRefreshTopView class]);
+    _bottomClass=NSStringFromClass([DJRefreshBottomView class]);
+    
+    self.enableInsetTop=65.0;
+    self.enableInsetBottom=65.0;
+    [_scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+    [_scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld|NSKeyValueObservingOptionPrior context:NULL];
+    
+}
+
+- (void)didRefreshCompletionBlock:(DJRefreshCompletionBlock)completionBlock{
+    self.comBlock=completionBlock;
+}
 
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -105,7 +126,7 @@
     }
     else if([keyPath isEqualToString:@"contentOffset"])
     {
-        if (_refreshingDirection==RefreshingDirectionNone) {
+        if (_refreshingDirection==DJRefreshingDirectionNone) {
             [self _drogForChange:change];
         }
     }
@@ -121,15 +142,15 @@
         if(self.scrollView.contentOffset.y<-self.enableInsetTop)
         {
             if (self.autoRefreshTop || ( self.scrollView.decelerating && self.scrollView.dragging==NO)) {
-                [self _engageRefreshDirection:RefreshDirectionTop];
+                [self _engageDJRefreshDirection:DJRefreshDirectionTop];
             }
             else {
-                [self _canEngageRefreshDirection:RefreshDirectionTop];
+                [self _canEngageDJRefreshDirection:DJRefreshDirectionTop];
             }
         }
         else
         {
-            [self _didDisengageRefreshDirection:RefreshDirectionTop];
+            [self _didDisengageDJRefreshDirection:DJRefreshDirectionTop];
         }
     }
     
@@ -139,14 +160,14 @@
         if(self.scrollView.contentOffset.y>(self.scrollView.contentSize.height+self.enableInsetBottom-self.scrollView.bounds.size.height) )
         {
             if(self.autoRefreshBottom || (self.scrollView.decelerating && self.scrollView.dragging==NO)){
-                [self _engageRefreshDirection:RefreshDirectionBottom];
+                [self _engageDJRefreshDirection:DJRefreshDirectionBottom];
             }
             else{
-                [self _canEngageRefreshDirection:RefreshDirectionBottom];
+                [self _canEngageDJRefreshDirection:DJRefreshDirectionBottom];
             }
         }
         else {
-            [self _didDisengageRefreshDirection:RefreshDirectionBottom];
+            [self _didDisengageDJRefreshDirection:DJRefreshDirectionBottom];
         }
         
     }
@@ -156,133 +177,154 @@
 }
 
 
-- (void)_canEngageRefreshDirection:(RefreshDirection) direction
+- (void)_canEngageDJRefreshDirection:(DJRefreshDirection) direction
 {
     
     
-    if (direction==RefreshDirectionTop)
+    if (direction==DJRefreshDirectionTop)
     {
-        [self.topView performSelector:@selector(canEngageRefresh)];
-        //[self.topView canEngageRefresh];
+        if (self.topView.refreshViewType!=DJRefreshViewTypeCanRefresh) {
+            [self.topView canEngageRefresh];
+        }
     }
-    else if (direction==RefreshDirectionBottom)
+    else if (direction==DJRefreshDirectionBottom)
     {
-        [self.bottomView performSelector:@selector(canEngageRefresh)];
-        //[self.bottomView canEngageRefresh];
+        if (self.bottomView.refreshViewType!=DJRefreshViewTypeCanRefresh) {
+            [self.bottomView canEngageRefresh];
+        }
     }
 }
 
-- (void)_didDisengageRefreshDirection:(RefreshDirection) direction
+- (void)_didDisengageDJRefreshDirection:(DJRefreshDirection) direction
 {
     
-    if (direction==RefreshDirectionTop)
+    if (direction==DJRefreshDirectionTop)
     {
-        [self.topView performSelector:@selector(didDisengageRefresh)];
-        //[self.topView didDisengageRefresh];
+        if (self.topView.refreshViewType!=DJRefreshViewTypeDefine) {
+            [self.topView didDisengageRefresh];
+        }
     }
-    else if (direction==RefreshDirectionBottom)
+    else if (direction==DJRefreshDirectionBottom)
     {
-        [self.bottomView performSelector:@selector(didDisengageRefresh)];
-        //[self.bottomView didDisengageRefresh];
+        if (self.bottomView.refreshViewType!=DJRefreshViewTypeDefine) {
+            [self.bottomView didDisengageRefresh];
+        }
     }
 }
 
 
-- (void)_engageRefreshDirection:(RefreshDirection) direction
+- (void)_engageDJRefreshDirection:(DJRefreshDirection) direction
 {
     
     UIEdgeInsets edge = UIEdgeInsetsZero;
     
-    if (direction==RefreshDirectionTop)
+    if (direction==DJRefreshDirectionTop)
     {
-        _refreshingDirection=RefreshingDirectionTop;
+        _refreshingDirection=DJRefreshingDirectionTop;
         float topH=self.enableInsetTop<45?45:self.enableInsetTop;
         edge=UIEdgeInsetsMake(topH, 0, 0, 0);///enableInsetTop
         
     }
-    else if (direction==RefreshDirectionBottom)
+    else if (direction==DJRefreshDirectionBottom)
     {
         float botomH=self.enableInsetBottom<45?45:self.enableInsetBottom;
         edge=UIEdgeInsetsMake(0, 0, botomH, 0);///self.enableInsetBottom
-        _refreshingDirection=RefreshingDirectionBottom;
+        _refreshingDirection=DJRefreshingDirectionBottom;
         
     }
     _scrollView.contentInset=edge;
     
-    [self _didEngageRefreshDirection:direction];
+    [self _didEngageDJRefreshDirection:direction];
     
 }
 
-- (void)_didEngageRefreshDirection:(RefreshDirection) direction
+- (void)_didEngageDJRefreshDirection:(DJRefreshDirection) direction
 {
     
-    if (direction==RefreshDirectionTop)
+    if (direction==DJRefreshDirectionTop)
     {
-        [self.topView performSelector:@selector(startRefreshing)];
-        //[self.topView startRefreshing];
+        if (self.topView.refreshViewType!=DJRefreshViewTypeRefreshing) {
+            [self.topView startRefreshing];
+        }
     }
-    else if (direction==RefreshDirectionBottom)
+    else if (direction==DJRefreshDirectionBottom)
     {
-        [self.bottomView performSelector:@selector(startRefreshing)];
-        // [self.bottomView startRefreshing];
+        if (self.bottomView.refreshViewType!=DJRefreshViewTypeRefreshing) {
+            [self.bottomView startRefreshing];
+        }
     }
     
-    if ([self.delegate respondsToSelector:@selector(refreshControl:didEngageRefreshDirection:)])
+    if (self.comBlock) {
+        @try {
+            self.comBlock(self,direction,nil);
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(refreshControl:didEngageDJRefreshDirection:)])
     {
-        [self.delegate refreshControl:self didEngageRefreshDirection:direction];
+        [self.delegate refreshControl:self didEngageDJRefreshDirection:direction];
     }
     
     
 }
 
 
-- (void)_startRefreshingDirection:(RefreshDirection)direction animation:(BOOL)animation
+- (void)_startDJRefreshingDirection:(DJRefreshDirection)direction animation:(BOOL)animation
 {
     CGPoint point =CGPointZero;
     
-    if (direction==RefreshDirectionTop)
+    if (direction==DJRefreshDirectionTop)
     {
         float topH=self.enableInsetTop<45?45:self.enableInsetTop;
         point=CGPointMake(0, -topH);//enableInsetTop
     }
-    else if (direction==RefreshDirectionBottom)
+    else if (direction==DJRefreshDirectionBottom)
     {
         float height=MAX(self.scrollView.contentSize.height, self.scrollView.frame.size.height);
         float bottomH=self.enableInsetBottom<45?45:self.enableInsetBottom;
         point=CGPointMake(0, height-self.scrollView.bounds.size.height+bottomH);///enableInsetBottom
     }
+    
     __weak typeof(self)weakSelf=self;
     
-    [_scrollView setContentOffset:point animated:YES];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_async(dispatch_get_main_queue(), ^{
         __strong typeof(self)strongSelf=weakSelf;
-        [strongSelf _engageRefreshDirection:direction];
+        [_scrollView setContentOffset:point animated:animation];
+        [strongSelf _engageDJRefreshDirection:direction];
     });
-    
     
 }
 
-- (void)_finishRefreshingDirection1:(RefreshDirection)direction animation:(BOOL)animation
+- (void)_finishDJRefreshingDirection1:(DJRefreshDirection)direction animation:(BOOL)animation
 {
-    [UIView animateWithDuration:0.25 animations:^{
-        
+    
+    if (animation) {
+        [UIView animateWithDuration:0.25 animations:^{
+            _scrollView.contentInset=UIEdgeInsetsZero;
+        }];
+    }else {
         _scrollView.contentInset=UIEdgeInsetsZero;
-        
-    } completion:^(BOOL finished) {
-        
-    }];
-    
-    _refreshingDirection=RefreshingDirectionNone;
-    
-    if (direction==RefreshDirectionTop)
-    {
-        [self.topView performSelector:@selector(finishRefreshing)];
-        //[self.topView finishRefreshing];
     }
-    else if(direction==RefreshDirectionBottom)
+
+    _refreshingDirection=DJRefreshingDirectionNone;
+    
+    if (direction==DJRefreshDirectionTop)
     {
-        [self.bottomView performSelector:@selector(finishRefreshing)];
-        //[self.bottomView finishRefreshing];
+        if (self.topView.refreshViewType!=DJRefreshViewTypeDefine) {
+            [self.topView finishRefreshing];
+        }
+    }
+    else if(direction==DJRefreshDirectionBottom)
+    {
+        if (self.bottomView.refreshViewType!=DJRefreshViewTypeDefine) {
+        [self.bottomView finishRefreshing];
+        }
     }
     
 }
@@ -314,8 +356,7 @@
         else{
             _topView.frame=CGRectMake(0, -topOffsetY, self.scrollView.frame.size.width, topOffsetY);
             
-            [_topView performSelector:@selector(resetLayoutSubViews)];
-            //[_topView resetLayoutSubViews];
+            [_topView layoutSubviews];
         }
         
     }
@@ -339,8 +380,8 @@
         else{
             _bottomView.frame=CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+45);
             
-            [self.bottomView performSelector:@selector(resetLayoutSubViews)];
             //[self.bottomView resetLayoutSubViews];
+            [self.bottomView layoutSubviews];
         }
         
     }
@@ -389,20 +430,26 @@
 }
 
 
-
-- (void)startRefreshingDirection:(RefreshDirection)direction
-{
+- (void)startDJRefreshingDirection:(DJRefreshDirection)direction{
     
-    [self _startRefreshingDirection:direction animation:YES];
+    [self startDJRefreshingDirection:direction animation:YES];
+    
+}
+- (void)startDJRefreshingDirection:(DJRefreshDirection)direction animation:(BOOL)animation
+{
+    [self _startDJRefreshingDirection:direction animation:animation];
     
 }
 
-- (void)finishRefreshingDirection:(RefreshDirection)direction
+- (void)finishDJRefreshingDirection:(DJRefreshDirection)direction
 {
     
-    [self _finishRefreshingDirection1:direction animation:YES];
+    [self _finishDJRefreshingDirection1:direction animation:YES];
     
-    
+}
+
+- (void)finishDJRefreshingDirection:(DJRefreshDirection)direction animation:(BOOL)animation{
+    [self _finishDJRefreshingDirection1:direction animation:animation];
 }
 
 
