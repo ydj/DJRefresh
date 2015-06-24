@@ -14,6 +14,8 @@
 		5CB0E6261B3B06D60029691D /* pull_refresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB0E6201B3B06D60029691D /* pull_refresh@3x.png */; };
 		5CB0E6271B3B06D60029691D /* SampleRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0E6221B3B06D60029691D /* SampleRefreshView.m */; };
 		5CB0E62A1B3B0AEF0029691D /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0E6291B3B0AEF0029691D /* TableViewController.m */; };
+		5CB0E62D1B3B14120029691D /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0E62C1B3B14120029691D /* CollectionViewController.m */; };
+		5CB0E6301B3B170F0029691D /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0E62F1B3B170F0029691D /* WebViewController.m */; };
 		5CCB0DE71B3AFD980046536B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0DE61B3AFD980046536B /* main.m */; };
 		5CCB0DEA1B3AFD980046536B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0DE91B3AFD980046536B /* AppDelegate.m */; };
 		5CCB0DF01B3AFD980046536B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCB0DEE1B3AFD980046536B /* Main.storyboard */; };
@@ -37,6 +39,10 @@
 		5CB0E6221B3B06D60029691D /* SampleRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleRefreshView.m; sourceTree = "<group>"; };
 		5CB0E6281B3B0AEF0029691D /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		5CB0E6291B3B0AEF0029691D /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		5CB0E62B1B3B14120029691D /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		5CB0E62C1B3B14120029691D /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		5CB0E62E1B3B170F0029691D /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		5CB0E62F1B3B170F0029691D /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		5CCB0DE11B3AFD980046536B /* DJRefreshSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DJRefreshSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CCB0DE51B3AFD980046536B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CCB0DE61B3AFD980046536B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -80,6 +86,19 @@
 			path = CustomRefreshView;
 			sourceTree = "<group>";
 		};
+		5CB0E6311B3B19D30029691D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5CB0E6281B3B0AEF0029691D /* TableViewController.h */,
+				5CB0E6291B3B0AEF0029691D /* TableViewController.m */,
+				5CB0E62B1B3B14120029691D /* CollectionViewController.h */,
+				5CB0E62C1B3B14120029691D /* CollectionViewController.m */,
+				5CB0E62E1B3B170F0029691D /* WebViewController.h */,
+				5CB0E62F1B3B170F0029691D /* WebViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		5CCB0DD81B3AFD980046536B = {
 			isa = PBXGroup;
 			children = (
@@ -100,13 +119,12 @@
 			isa = PBXGroup;
 			children = (
 				5CCB0E0A1B3AFF0D0046536B /* DJRefresh */,
+				5CB0E61C1B3B06D60029691D /* CustomRefreshView */,
 				5CCB0DE81B3AFD980046536B /* AppDelegate.h */,
 				5CCB0DE91B3AFD980046536B /* AppDelegate.m */,
-				5CB0E61C1B3B06D60029691D /* CustomRefreshView */,
 				5CB0E6191B3B03580029691D /* SampleViewController.h */,
 				5CB0E61A1B3B03580029691D /* SampleViewController.m */,
-				5CB0E6281B3B0AEF0029691D /* TableViewController.h */,
-				5CB0E6291B3B0AEF0029691D /* TableViewController.m */,
+				5CB0E6311B3B19D30029691D /* Controllers */,
 				5CCB0DEE1B3AFD980046536B /* Main.storyboard */,
 				5CCB0DF11B3AFD980046536B /* Images.xcassets */,
 				5CCB0DF31B3AFD980046536B /* LaunchScreen.xib */,
@@ -226,12 +244,14 @@
 			files = (
 				5CCB0E181B3AFF0D0046536B /* DJRefreshTopView.m in Sources */,
 				5CCB0E171B3AFF0D0046536B /* DJRefreshBottomView.m in Sources */,
+				5CB0E6301B3B170F0029691D /* WebViewController.m in Sources */,
 				5CB0E6271B3B06D60029691D /* SampleRefreshView.m in Sources */,
 				5CB0E61B1B3B03580029691D /* SampleViewController.m in Sources */,
 				5CB0E62A1B3B0AEF0029691D /* TableViewController.m in Sources */,
 				5CCB0DEA1B3AFD980046536B /* AppDelegate.m in Sources */,
 				5CCB0DE71B3AFD980046536B /* main.m in Sources */,
 				5CCB0E191B3AFF0D0046536B /* DJRefreshView.m in Sources */,
+				5CB0E62D1B3B14120029691D /* CollectionViewController.m in Sources */,
 				5CCB0E151B3AFF0D0046536B /* DJRefresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

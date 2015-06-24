@@ -26,9 +26,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    self.title=@"DJRefresh";
     
-    
-    _dataList=@[@"tableView",@"collectionView"];
+    _dataList=@[@"tableView",@"collectionView",@"WebView"];
     
     
     _refresh=[DJRefresh refreshWithScrollView:self.tableView];
@@ -69,6 +69,10 @@
     
     if (indexPath.row==0) {
         [self performSegueWithIdentifier:@"pushToTable" sender:indexPath];
+    }else if (indexPath.row==1){
+        [self performSegueWithIdentifier:@"pushToCollection" sender:indexPath];
+    }else if (indexPath.row==2){
+        [self performSegueWithIdentifier:@"pushToWEB" sender:indexPath];
     }
     
     
