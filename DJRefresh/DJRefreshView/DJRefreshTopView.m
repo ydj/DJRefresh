@@ -121,10 +121,7 @@
         _imageView.transform=CGAffineTransformMakeRotation(M_PI);
     }];
 }
-///松开返回
-- (void)didDisengageRefresh{
-    [super didDisengageRefresh];
-}
+
 ///开始刷新
 - (void)startRefreshing{
     [super startRefreshing];
@@ -135,15 +132,7 @@
     [_activityIndicatorView startAnimating];
     _promptLabel.text=@"正在加载...";
 }
-///结束
-- (void)finishRefreshing{
-    [super finishRefreshing];
-}
 
-
-- (void)pullProgress:(CGFloat)progress{
-    [super pullProgress:progress];
-}
 
 
 @end

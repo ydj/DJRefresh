@@ -66,7 +66,7 @@
 }
 
 
-- (void)pullProgress:(CGFloat)progress{
+- (void)draggingProgress:(CGFloat)progress{
     
 }
 

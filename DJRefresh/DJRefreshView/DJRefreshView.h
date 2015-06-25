@@ -23,23 +23,66 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  DJRefreshView的状态
+ */
 typedef NS_ENUM(NSInteger, DJRefreshViewType){
+    /**
+     *  默认状态
+     */
     DJRefreshViewTypeDefine=0,
+    /**
+     *  可以刷新
+     */
     DJRefreshViewTypeCanRefresh,
+    /**
+     *  正在刷新状态
+     */
     DJRefreshViewTypeRefreshing
 };
 
 
+/**
+ *  刷新的View控件
+ */
 @interface DJRefreshView : UIView
 
+/**
+ *  当前的状态
+ */
 @property (nonatomic,readonly)DJRefreshViewType refreshViewType;
 
+
+/**
+ *  返回重置
+ */
 - (void)reset;
+
+/**
+ *  可以进行刷新操作
+ */
 - (void)canEngageRefresh;
+
+/**
+ *  不能刷新操作
+ */
 - (void)didDisengageRefresh;
+
+/**
+ *  开始刷新
+ */
 - (void)startRefreshing;
+
+/**
+ *  完成刷新
+ */
 - (void)finishRefreshing;
 
-- (void)pullProgress:(CGFloat)progress;
+/**
+ *  下拉的进度 范围（0.0-1.0）
+ *
+ *  @param progress 进度
+ */
+- (void)draggingProgress:(CGFloat)progress;
 
 @end
