@@ -109,14 +109,14 @@
     {
         [_activityIndicatorView stopAnimating];
     }
-    _promptLabel.text=@"下拉刷新";
+    _promptLabel.text=kDJRefreshTopTypeDefine;
 }
 
 ///松开可刷新
 - (void)canEngageRefresh{
     [super canEngageRefresh];
     
-    _promptLabel.text=@"松开刷新";
+    _promptLabel.text=kDJRefreshTopTypeCanRefresh;
     [UIView animateWithDuration:0.25 animations:^{
         _imageView.transform=CGAffineTransformMakeRotation(M_PI);
     }];
@@ -130,7 +130,7 @@
     _imageView.transform=CGAffineTransformIdentity;
 
     [_activityIndicatorView startAnimating];
-    _promptLabel.text=@"正在加载...";
+    _promptLabel.text=kDJRefreshTopTypeRefreshing;
 }
 
 

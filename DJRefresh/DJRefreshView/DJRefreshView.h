@@ -22,6 +22,7 @@
 //  THE SOFTWARE.
 
 #import <UIKit/UIKit.h>
+#import "DJRefreshMacro.h"
 
 /**
  *  DJRefreshView的状态

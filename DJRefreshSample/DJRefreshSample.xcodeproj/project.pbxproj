@@ -60,6 +60,7 @@
 		5CCB0E121B3AFF0D0046536B /* DJRefreshTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshTopView.m; sourceTree = "<group>"; };
 		5CCB0E131B3AFF0D0046536B /* DJRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshView.h; sourceTree = "<group>"; };
 		5CCB0E141B3AFF0D0046536B /* DJRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshView.m; sourceTree = "<group>"; };
+		5CE272021B3BA9A4007D50D3 /* DJRefreshMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DJRefreshMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +164,7 @@
 				5CCB0E121B3AFF0D0046536B /* DJRefreshTopView.m */,
 				5CCB0E0F1B3AFF0D0046536B /* DJRefreshBottomView.h */,
 				5CCB0E101B3AFF0D0046536B /* DJRefreshBottomView.m */,
+				5CE272021B3BA9A4007D50D3 /* DJRefreshMacro.h */,
 			);
 			path = DJRefreshView;
 			sourceTree = "<group>";

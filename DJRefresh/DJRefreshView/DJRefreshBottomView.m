@@ -77,7 +77,7 @@
     [super reset];
     
     
-    _promptLabel.text=@"上拉加载更多";
+    _promptLabel.text=kDJRefreshBottomTypeDefine;
     if ([_activityIndicatorView isAnimating])
     {
         [_activityIndicatorView stopAnimating];
@@ -90,13 +90,13 @@
 - (void)canEngageRefresh{
     [super canEngageRefresh];
     
-    _promptLabel.text=@"松开即可加载";
+    _promptLabel.text=kDJRefreshBottomTypeCanRefresh;
 }
 
 ///开始刷新
 - (void)startRefreshing{
     [super startRefreshing];
-    _promptLabel.text=@"正在加载中...";
+    _promptLabel.text=kDJRefreshBottomTypeRefreshing;
     [self.activityIndicatorView startAnimating];
 }
 
