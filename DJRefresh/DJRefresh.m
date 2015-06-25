@@ -136,7 +136,11 @@
     
     if ( self.topEnabled && self.scrollView.contentOffset.y<0)
     {
-        if(self.scrollView.contentOffset.y<-self.enableInsetTop)
+        CGFloat progress=self.scrollView.contentOffset.y/(-self.enableInsetTop);
+        progress=MIN(1, MAX(progress, 0));
+        [self _didDraggingProgress:progress direction:DJRefreshDirectionTop];
+        
+        if(self.scrollView.contentOffset.y<=-self.enableInsetTop)
         {
             if (self.autoRefreshTop || ( self.scrollView.decelerating && self.scrollView.dragging==NO)) {
                 [self _engageRefreshDirection:DJRefreshDirectionTop];
@@ -154,7 +158,13 @@
     if ( self.bottomEnabled && self.scrollView.contentOffset.y>0 )
     {
         
-        if(self.scrollView.contentOffset.y>(self.scrollView.contentSize.height+self.enableInsetBottom-self.scrollView.bounds.size.height) )
+        if (self.scrollView.contentOffset.y>(self.scrollView.contentSize.height-self.scrollView.bounds.size.height)) {
+            CGFloat progress=(self.scrollView.contentOffset.y-(self.scrollView.contentSize.height-self.scrollView.bounds.size.height))/self.enableInsetBottom;
+            progress=MIN(1, MAX(progress, 0));
+            [self _didDraggingProgress:progress direction:DJRefreshDirectionBottom];
+        }
+        
+        if(self.scrollView.contentOffset.y>=(self.scrollView.contentSize.height+self.enableInsetBottom-self.scrollView.bounds.size.height) )
         {
             if(self.autoRefreshBottom || (self.scrollView.decelerating && self.scrollView.dragging==NO)){
                 [self _engageRefreshDirection:DJRefreshDirectionBottom];
@@ -173,6 +183,14 @@
     
 }
 
+
+- (void)_didDraggingProgress:(CGFloat)progress direction:(DJRefreshDirection)direction{
+    if (direction==DJRefreshDirectionTop) {
+        [self.topView draggingProgress:progress];
+    }else if (direction==DJRefreshDirectionBottom){
+        [self.bottomView draggingProgress:progress];
+    }
+}
 
 - (void)_canEngageRefreshDirection:(DJRefreshDirection) direction
 {
@@ -218,13 +236,19 @@
     if (direction==DJRefreshDirectionTop)
     {
         _refreshingDirection=DJRefreshingDirectionTop;
-        float topH=self.enableInsetTop<45?45:self.enableInsetTop;
+        CGFloat topH=self.enableInsetTop<45?45:self.enableInsetTop;
+        if (self.isDisableAddTop) {
+            topH=0;
+        }
         edge=UIEdgeInsetsMake(topH, 0, 0, 0);///enableInsetTop
         
     }
     else if (direction==DJRefreshDirectionBottom)
     {
-        float botomH=self.enableInsetBottom<45?45:self.enableInsetBottom;
+        CGFloat botomH=self.enableInsetBottom<45?45:self.enableInsetBottom;
+        if (self.isDisableAddBottom) {
+            botomH=0;
+        }
         edge=UIEdgeInsetsMake(0, 0, botomH, 0);///self.enableInsetBottom
         _refreshingDirection=DJRefreshingDirectionBottom;
         
@@ -278,13 +302,19 @@
     
     if (direction==DJRefreshDirectionTop)
     {
-        float topH=self.enableInsetTop<45?45:self.enableInsetTop;
+        CGFloat topH=self.enableInsetTop<45?45:self.enableInsetTop;
+        if (self.isDisableAddTop) {
+            topH=0;
+        }
         point=CGPointMake(0, -topH);//enableInsetTop
     }
     else if (direction==DJRefreshDirectionBottom)
     {
-        float height=MAX(self.scrollView.contentSize.height, self.scrollView.frame.size.height);
-        float bottomH=self.enableInsetBottom<45?45:self.enableInsetBottom;
+        CGFloat height=MAX(self.scrollView.contentSize.height, self.scrollView.frame.size.height);
+        CGFloat bottomH=self.enableInsetBottom<45?45:self.enableInsetBottom;
+        if (self.isDisableAddBottom) {
+            bottomH=0;
+        }
         point=CGPointMake(0, height-self.scrollView.bounds.size.height+bottomH);///enableInsetBottom
     }
     
@@ -347,14 +377,24 @@
 
         if (self.topView==nil || ![self.topView isKindOfClass:className])
         {
-            
+            [self.topView removeFromSuperview];
+            self.topView=nil;
             _topView=[[className alloc] initWithFrame:CGRectMake(0, -topOffsetY, self.scrollView.frame.size.width, topOffsetY)];
-            [self.scrollView addSubview:self.topView];
+            
+            if (!self.isDisableAddTop) {
+                [self.scrollView addSubview:self.topView];
+            }
+            
         }
         else{
+            
             _topView.frame=CGRectMake(0, -topOffsetY, self.scrollView.frame.size.width, topOffsetY);
             
             [_topView layoutSubviews];
+        }
+        
+        if (!self.isDisableAddTop && ![[self.scrollView subviews] containsObject:self.topView]) {
+            [self.scrollView addSubview:self.topView];
         }
         
     }
@@ -371,14 +411,24 @@
         Class className=NSClassFromString(self.bottomClass);
         if (self.bottomView==nil || ![self.bottomView isKindOfClass:className])
         {
+            [self.bottomView removeFromSuperview];
+            self.bottomView=nil;
             _bottomView=[[className alloc] initWithFrame:CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+45)];
-            [self.scrollView addSubview:_bottomView];
+            
+            if (!self.isDisableAddBottom) {
+                [self.scrollView addSubview:_bottomView];
+            }
         }
         else{
+            
             _bottomView.frame=CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+45);
             
-            //[self.bottomView resetLayoutSubViews];
             [self.bottomView layoutSubviews];
+        }
+        
+        
+        if (!self.isDisableAddBottom && ![[self.scrollView subviews] containsObject:self.bottomView]) {
+            [self.scrollView addSubview:_bottomView];
         }
         
     }
@@ -387,6 +437,21 @@
 }
 
 
+- (void)setIsDisableAddTop:(BOOL)isDisableAddTop{
+    _isDisableAddTop=isDisableAddTop;
+    if (_isDisableAddTop && [[self.scrollView subviews] containsObject:self.topView]) {
+        [self.topView removeFromSuperview];
+    }
+}
+
+- (void)setIsDisableAddBottom:(BOOL)isDisableAddBottom{
+    
+    _isDisableAddBottom=isDisableAddBottom;
+    if (_isDisableAddBottom && [[self.scrollView subviews] containsObject:self.bottomView]) {
+        [self.bottomView removeFromSuperview];
+    }
+    
+}
 
 
 - (void)setTopEnabled:(BOOL)topEnabled

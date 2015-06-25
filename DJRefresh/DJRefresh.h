@@ -81,16 +81,25 @@ typedef void(^DJRefreshCompletionBlock)(DJRefresh * refresh,DJRefreshDirection d
 /**上拉 状态改变的距离 默认65.0*/
 @property (nonatomic,assign)float enableInsetBottom;
 
-/*
- *是否开启自动刷新,下拉到enableInsetTop位置自动刷新
-  YES-开启，NO-不开启，默认是NO
+/**
+ *  是否开启自动刷新,下拉到enableInsetTop位置自动刷新
+    YES-开启，NO-不开启，默认是NO
  */
 @property (nonatomic,assign)BOOL autoRefreshTop;
-/*
- * 是否开启自动加载更多，上拉到enableInsetBottom位置自动加载跟多
-   YES-开启，NO-不开启，默认是NO
+/**
+ *  是否开启自动加载更多，上拉到enableInsetBottom位置自动加载更多
+    YES-开启，NO-不开启，默认是NO
  */
 @property (nonatomic,assign)BOOL autoRefreshBottom;
+
+/**
+ *  是否禁止添加topView到ScrollView上,默认是否
+ */
+@property (nonatomic,assign)BOOL isDisableAddTop;
+/**
+ *  是否禁止添加bottomViewDaoScrollView上,默认是否
+ */
+@property (nonatomic,assign)BOOL isDisableAddBottom;
 
 /**
  *	自定义TopView,注册Top加载的view,view必须继承DJRefreshView类
