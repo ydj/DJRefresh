@@ -33,7 +33,7 @@ typedef NS_ENUM(NSInteger, DJRefreshViewType){
      */
     DJRefreshViewTypeDefine=0,
     /**
-     *  可以刷新
+     *  可以刷新状态
      */
     DJRefreshViewTypeCanRefresh,
     /**

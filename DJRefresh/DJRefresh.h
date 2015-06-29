@@ -45,6 +45,14 @@ typedef enum {
 } DJRefreshDirection;
 
 @class DJRefresh;
+
+/**
+ *  刷新回调Block
+ *
+ *  @param refresh   刷新组件对象
+ *  @param direction 方向
+ *  @param info      预留参数
+ */
 typedef void(^DJRefreshCompletionBlock)(DJRefresh * refresh,DJRefreshDirection direction,NSDictionary *info);
 
 @protocol DJRefreshDelegate;
@@ -57,9 +65,9 @@ typedef void(^DJRefreshCompletionBlock)(DJRefresh * refresh,DJRefreshDirection d
 
 /**当前的状态*/
 @property (nonatomic,assign,readonly)DJRefreshingDirections refreshingDirection;
-
+/**当前监控的scrollView*/
 @property (nonatomic,readonly)UIScrollView * scrollView;
-
+/**代理回调对象*/
 @property (nonatomic,weak)id<DJRefreshDelegate>delegate;
 
 + (instancetype)refreshWithScrollView:(UIScrollView *)scrollView;
@@ -97,7 +105,7 @@ typedef void(^DJRefreshCompletionBlock)(DJRefresh * refresh,DJRefreshDirection d
  */
 @property (nonatomic,assign)BOOL isDisableAddTop;
 /**
- *  是否禁止添加bottomViewDaoScrollView上,默认是否
+ *  是否禁止添加bottomView到ScrollView上,默认是否
  */
 @property (nonatomic,assign)BOOL isDisableAddBottom;
 
