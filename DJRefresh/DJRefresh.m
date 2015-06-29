@@ -253,9 +253,15 @@
         _refreshingDirection=DJRefreshingDirectionBottom;
         
     }
-    _scrollView.contentInset=edge;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        _scrollView.contentInset=edge;
+        if (direction==DJRefreshDirectionTop) {
+            [_scrollView setContentOffset:CGPointMake(0, -edge.top) animated:YES];
+        }
+        [self _didEngageRefreshDirection:direction];
+    });
     
-    [self _didEngageRefreshDirection:direction];
     
 }
 
