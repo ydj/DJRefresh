@@ -28,10 +28,6 @@
 
 @interface DJRefresh ()
 
-
-@property (nonatomic,strong)DJRefreshView * topView;
-@property (nonatomic,strong)DJRefreshView * bottomView;
-
 @property (nonatomic,copy)NSString * topClass;
 @property (nonatomic,copy)NSString * bottomClass;
 
@@ -47,19 +43,13 @@
     if ([topClass isSubclassOfClass:[DJRefreshView class]]) {
         self.topClass=NSStringFromClass([topClass class]);
     }
-    else{
-        self.topClass=NSStringFromClass([DJRefreshTopView class]);
-    }
+
 }
 - (void)registerClassForBottomView:(Class)bottomClass
 {
     if ([bottomClass isSubclassOfClass:[DJRefreshView class]]) {
         self.bottomClass=NSStringFromClass([bottomClass class]);
     }
-    else{
-        self.bottomClass=NSStringFromClass([DJRefreshBottomView class]);
-    }
-    
 }
 
 
@@ -92,9 +82,6 @@
 
 - (void)setup{
     
-    _topClass=NSStringFromClass([DJRefreshTopView class]);
-    _bottomClass=NSStringFromClass([DJRefreshBottomView class]);
-    
     self.enableInsetTop=65.0;
     self.enableInsetBottom=65.0;
     [_scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
@@ -121,7 +108,7 @@
             [self initBottonView];
         }
     }
-    else if([keyPath isEqualToString:@"contentOffset"])
+    else if([keyPath isEqual:@"contentOffset"])
     {
         if (_refreshingDirection==DJRefreshingDirectionNone) {
             [self _drogForChange:change];
@@ -186,9 +173,9 @@
 
 - (void)_didDraggingProgress:(CGFloat)progress direction:(DJRefreshDirection)direction{
     if (direction==DJRefreshDirectionTop) {
-        [self.topView draggingProgress:progress];
+        [self.topRefreshView draggingProgress:progress];
     }else if (direction==DJRefreshDirectionBottom){
-        [self.bottomView draggingProgress:progress];
+        [self.bottomRefreshView draggingProgress:progress];
     }
 }
 
@@ -198,14 +185,14 @@
     
     if (direction==DJRefreshDirectionTop)
     {
-        if (self.topView.refreshViewType!=DJRefreshViewTypeCanRefresh) {
-            [self.topView canEngageRefresh];
+        if (self.topRefreshView.refreshViewType!=DJRefreshViewTypeCanRefresh) {
+            [self.topRefreshView canEngageRefresh];
         }
     }
     else if (direction==DJRefreshDirectionBottom)
     {
-        if (self.bottomView.refreshViewType!=DJRefreshViewTypeCanRefresh) {
-            [self.bottomView canEngageRefresh];
+        if (self.bottomRefreshView.refreshViewType!=DJRefreshViewTypeCanRefresh) {
+            [self.bottomRefreshView canEngageRefresh];
         }
     }
 }
@@ -215,14 +202,14 @@
     
     if (direction==DJRefreshDirectionTop)
     {
-        if (self.topView.refreshViewType!=DJRefreshViewTypeDefine) {
-            [self.topView didDisengageRefresh];
+        if (self.topRefreshView.refreshViewType!=DJRefreshViewTypeDefine) {
+            [self.topRefreshView didDisengageRefresh];
         }
     }
     else if (direction==DJRefreshDirectionBottom)
     {
-        if (self.bottomView.refreshViewType!=DJRefreshViewTypeDefine) {
-            [self.bottomView didDisengageRefresh];
+        if (self.bottomRefreshView.refreshViewType!=DJRefreshViewTypeDefine) {
+            [self.bottomRefreshView didDisengageRefresh];
         }
     }
 }
@@ -270,14 +257,14 @@
     
     if (direction==DJRefreshDirectionTop)
     {
-        if (self.topView.refreshViewType!=DJRefreshViewTypeRefreshing) {
-            [self.topView startRefreshing];
+        if (self.topRefreshView.refreshViewType!=DJRefreshViewTypeRefreshing) {
+            [self.topRefreshView startRefreshing];
         }
     }
     else if (direction==DJRefreshDirectionBottom)
     {
-        if (self.bottomView.refreshViewType!=DJRefreshViewTypeRefreshing) {
-            [self.bottomView startRefreshing];
+        if (self.bottomRefreshView.refreshViewType!=DJRefreshViewTypeRefreshing) {
+            [self.bottomRefreshView startRefreshing];
         }
     }
     
@@ -349,14 +336,14 @@
     
     if (direction==DJRefreshDirectionTop)
     {
-        if (self.topView.refreshViewType!=DJRefreshViewTypeDefine) {
-            [self.topView finishRefreshing];
+        if (self.topRefreshView.refreshViewType!=DJRefreshViewTypeDefine) {
+            [self.topRefreshView finishRefreshing];
         }
     }
     else if(direction==DJRefreshDirectionBottom)
     {
-        if (self.bottomView.refreshViewType!=DJRefreshViewTypeDefine) {
-        [self.bottomView finishRefreshing];
+        if (self.bottomRefreshView.refreshViewType!=DJRefreshViewTypeDefine) {
+        [self.bottomRefreshView finishRefreshing];
         }
     }
     
@@ -371,36 +358,57 @@
     [_scrollView removeObserver:self forKeyPath:@"contentOffset"];
 }
 
+- (void)setTopRefreshView:(DJRefreshView *)topRefreshView{
+    
+    if (_topRefreshView!=topRefreshView) {
+        [_topRefreshView removeFromSuperview];
+    }
+    _topRefreshView=topRefreshView;
+
+}
+
+- (void)setBottomRefreshView:(DJRefreshView *)bottomRefreshView{
+    if (_bottomRefreshView!=bottomRefreshView) {
+        [_bottomRefreshView removeFromSuperview];
+    }
+    _bottomRefreshView=bottomRefreshView;
+}
 
 - (void)initTopView
 {
     
     if (!CGRectIsEmpty(self.scrollView.frame))
     {
-        float topOffsetY=self.enableInsetTop+45;
+        CGFloat topOffsetY=self.enableInsetTop+45;
         
-        Class className=NSClassFromString(self.topClass);
-
-        if (self.topView==nil || ![self.topView isKindOfClass:className])
-        {
-            [self.topView removeFromSuperview];
-            self.topView=nil;
-            _topView=[[className alloc] initWithFrame:CGRectMake(0, -topOffsetY, self.scrollView.frame.size.width, topOffsetY)];
-            
-            if (!self.isDisableAddTop) {
-                [self.scrollView addSubview:self.topView];
+        CGRect currentRect=CGRectMake(0, -topOffsetY, self.scrollView.frame.size.width, topOffsetY);
+        
+        if (_topRefreshView==nil) {
+            NSString *classNameString=NSStringFromClass([DJRefreshTopView class]);
+            if (self.topClass.length>0) {
+                classNameString=self.topClass;
             }
             
+            Class className=NSClassFromString(classNameString);
+            _topRefreshView=[[className alloc] initWithFrame:currentRect];
+            
+        }else if (self.topClass && ![_topRefreshView isKindOfClass:NSClassFromString(self.topClass)]){
+            [_topRefreshView removeFromSuperview];
+            _topRefreshView=nil;
+            
+            Class className=NSClassFromString(self.topClass);
+            _topRefreshView=[[className alloc] initWithFrame:currentRect];
         }
         else{
-            
-            _topView.frame=CGRectMake(0, -topOffsetY, self.scrollView.frame.size.width, topOffsetY);
-            
-            [_topView layoutSubviews];
+            _topRefreshView.frame=currentRect;
         }
+        [_topRefreshView layoutIfNeeded];
         
-        if (!self.isDisableAddTop && ![[self.scrollView subviews] containsObject:self.topView]) {
-            [self.scrollView addSubview:self.topView];
+        if (self.topEnabled && !self.isDisableAddTop && ![[self.scrollView subviews] containsObject:self.topRefreshView]) {
+            [self.scrollView addSubview:self.topRefreshView];
+        }
+        else if (self.isDisableAddTop && [[self.scrollView subviews] containsObject:_topRefreshView]) {
+            [_topRefreshView removeFromSuperview];
         }
         
     }
@@ -413,28 +421,34 @@
     
     if (!CGRectIsNull(self.scrollView.frame))
     {
-        float y=MAX(self.scrollView.bounds.size.height, self.scrollView.contentSize.height);
-        Class className=NSClassFromString(self.bottomClass);
-        if (self.bottomView==nil || ![self.bottomView isKindOfClass:className])
-        {
-            [self.bottomView removeFromSuperview];
-            self.bottomView=nil;
-            _bottomView=[[className alloc] initWithFrame:CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+45)];
-            
-            if (!self.isDisableAddBottom) {
-                [self.scrollView addSubview:_bottomView];
+        CGFloat y=MAX(self.scrollView.bounds.size.height, self.scrollView.contentSize.height);
+        
+        CGRect currentRect=CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+45);
+        
+        if (_bottomRefreshView==nil) {
+            NSString *classNameString=NSStringFromClass([DJRefreshBottomView class]);
+            if (self.bottomClass) {
+                classNameString=self.bottomClass;
             }
+            Class className=NSClassFromString(classNameString);
+            _bottomRefreshView=[[className alloc] initWithFrame:currentRect];
+            
+        }else if (self.bottomClass && ![self.bottomRefreshView isKindOfClass:NSClassFromString(self.bottomClass)]){
+            [_bottomRefreshView removeFromSuperview];
+
+            Class className=NSClassFromString(self.bottomClass);
+            _bottomRefreshView=[[className alloc] initWithFrame:currentRect];
         }
         else{
-            
-            _bottomView.frame=CGRectMake(0,y , self.scrollView.bounds.size.width, self.enableInsetBottom+45);
-            
-            [self.bottomView layoutSubviews];
+            _bottomRefreshView.frame=currentRect;
         }
+        [_bottomRefreshView layoutIfNeeded];
         
-        
-        if (!self.isDisableAddBottom && ![[self.scrollView subviews] containsObject:self.bottomView]) {
-            [self.scrollView addSubview:_bottomView];
+        if (self.bottomEnabled && !self.isDisableAddBottom && ![[self.scrollView subviews] containsObject:_bottomRefreshView]) {
+            [self.scrollView addSubview:_bottomRefreshView];
+        }
+        else if (self.isDisableAddBottom && [[self.scrollView subviews] containsObject:_bottomRefreshView]) {
+            [_bottomRefreshView removeFromSuperview];
         }
         
     }
@@ -445,16 +459,16 @@
 
 - (void)setIsDisableAddTop:(BOOL)isDisableAddTop{
     _isDisableAddTop=isDisableAddTop;
-    if (_isDisableAddTop && [[self.scrollView subviews] containsObject:self.topView]) {
-        [self.topView removeFromSuperview];
+    if (_isDisableAddTop && [[self.scrollView subviews] containsObject:self.topRefreshView]) {
+        [self.topRefreshView removeFromSuperview];
     }
 }
 
 - (void)setIsDisableAddBottom:(BOOL)isDisableAddBottom{
     
     _isDisableAddBottom=isDisableAddBottom;
-    if (_isDisableAddBottom && [[self.scrollView subviews] containsObject:self.bottomView]) {
-        [self.bottomView removeFromSuperview];
+    if (_isDisableAddBottom && [[self.scrollView subviews] containsObject:self.bottomRefreshView]) {
+        [self.bottomRefreshView removeFromSuperview];
     }
     
 }
@@ -466,15 +480,15 @@
     
     if (_topEnabled)
     {
-        if (self.topView==nil)
+        if (self.topRefreshView==nil)
         {
             [self initTopView];
         }
-        
+
     }
     else{
-        [self.topView removeFromSuperview];
-        self.topView=nil;
+        [self.topRefreshView removeFromSuperview];
+        self.topRefreshView=nil;
     }
     
 }
@@ -485,14 +499,14 @@
     
     if (_bottomEnabled)
     {
-        if (_bottomView==nil)
+        if (_bottomRefreshView==nil)
         {
             [self initBottonView];
         }
     }
     else{
-        [_bottomView removeFromSuperview];
-        _bottomView=nil;
+        [_bottomRefreshView removeFromSuperview];
+        _bottomRefreshView=nil;
     }
     
 }

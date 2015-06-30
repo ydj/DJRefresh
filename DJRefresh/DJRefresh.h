@@ -44,7 +44,7 @@ typedef enum {
     DJRefreshDirectionBottom
 } DJRefreshDirection;
 
-@class DJRefresh;
+@class DJRefresh,DJRefreshView;
 
 /**
  *  刷新回调Block
@@ -65,10 +65,18 @@ typedef void(^DJRefreshCompletionBlock)(DJRefresh * refresh,DJRefreshDirection d
 
 /**当前的状态*/
 @property (nonatomic,assign,readonly)DJRefreshingDirections refreshingDirection;
+
 /**当前监控的scrollView*/
 @property (nonatomic,readonly)UIScrollView * scrollView;
+
 /**代理回调对象*/
 @property (nonatomic,weak)id<DJRefreshDelegate>delegate;
+
+/**下拉刷新TopRefreshView,自定义时需要继承DJRefreshView类*/
+@property (nonatomic,strong)DJRefreshView * topRefreshView;
+
+/**上拉刷新BottomRefreshView,自定义时需要继承DJRefreshView类*/
+@property (nonatomic,strong)DJRefreshView * bottomRefreshView;
 
 + (instancetype)refreshWithScrollView:(UIScrollView *)scrollView;
 
@@ -81,11 +89,13 @@ typedef void(^DJRefreshCompletionBlock)(DJRefresh * refresh,DJRefreshDirection d
 
 /**是否开启下拉刷新，YES-开启 NO-不开启 默认是NO*/
 @property (nonatomic,assign)BOOL topEnabled;
+
 /**是否开启上拉加载更多，YES-开启 NO-不开启 默认是NO*/
 @property (nonatomic,assign)BOOL bottomEnabled;
 
 /**下拉刷新 状态改变的距离 默认65.0*/
 @property (nonatomic,assign)float enableInsetTop;
+
 /**上拉 状态改变的距离 默认65.0*/
 @property (nonatomic,assign)float enableInsetBottom;
 
