@@ -23,6 +23,12 @@
 
 #import "DJRefreshView.h"
 
+@interface DJRefreshView ()
+
+@property (nonatomic,copy)DJRefreshViewDraggingProgressCompletionBlock progressBlock;
+
+@end
+
 @implementation DJRefreshView
 
 /*
@@ -68,8 +74,23 @@
 
 - (void)draggingProgress:(CGFloat)progress{
     
+    if (self.progressBlock) {
+        @try {
+            self.progressBlock(self,progress,nil);
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
+    }
+    
 }
 
+- (void)didDraggingProgressCompletionBlock:(DJRefreshViewDraggingProgressCompletionBlock)com{
+    self.progressBlock=com;
+}
 
 
 

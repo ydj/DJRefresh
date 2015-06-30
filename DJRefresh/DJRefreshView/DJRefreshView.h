@@ -42,6 +42,15 @@ typedef NS_ENUM(NSInteger, DJRefreshViewType){
     DJRefreshViewTypeRefreshing
 };
 
+@class DJRefreshView;
+
+/**
+ *	拉动的距离进度Block
+ *	@param refreshView	刷新View控件
+ *	@param progress		进度（0.0-1.0）
+ *	@param info			预留参数
+ */
+typedef void(^DJRefreshViewDraggingProgressCompletionBlock)(DJRefreshView * refreshView,CGFloat progress,NSDictionary *info);
 
 /**
  *  刷新的View控件
@@ -52,7 +61,6 @@ typedef NS_ENUM(NSInteger, DJRefreshViewType){
  *  当前的状态
  */
 @property (nonatomic,readonly)DJRefreshViewType refreshViewType;
-
 
 /**
  *  返回重置
@@ -80,10 +88,18 @@ typedef NS_ENUM(NSInteger, DJRefreshViewType){
 - (void)finishRefreshing;
 
 /**
- *  下拉的进度 范围（0.0-1.0）
+ *  拉动的进度 范围（0.0-1.0）
  *
  *  @param progress 进度
  */
 - (void)draggingProgress:(CGFloat)progress;
+
+
+/**
+ *	拉动的进度回调,在draggingProgress:方法中回调
+ *	@param com	回调Block
+ */
+- (void)didDraggingProgressCompletionBlock:(DJRefreshViewDraggingProgressCompletionBlock)com;
+
 
 @end
