@@ -30,11 +30,19 @@
     
     _dataList=@[@"tableView",@"collectionView",@"WebView"];
     
+    SampleRefreshView *refreshView=[[SampleRefreshView alloc] initWithFrame:CGRectZero];
+    [refreshView didDraggingProgressCompletionBlock:^(DJRefreshView *refreshView, CGFloat progress, NSDictionary *info) {
+       // NSLog(@"拉动进度%.2f",progress);
+    }];
+    
     
     _refresh=[DJRefresh refreshWithScrollView:self.tableView];
     _refresh.delegate=self;
     _refresh.topEnabled=YES;
-    [_refresh registerClassForTopView:[SampleRefreshView class]];
+    _refresh.topRefreshView=refreshView;
+//    _refresh.autoRefreshTop=YES;
+
+//    [_refresh registerClassForTopView:[SampleRefreshView class]];
     
     
     
