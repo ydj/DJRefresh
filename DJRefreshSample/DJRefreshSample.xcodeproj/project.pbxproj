@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C4657331B46E33F001AB85F /* DJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C4657281B46E33F001AB85F /* DJRefresh.bundle */; };
+		5C4657341B46E33F001AB85F /* DJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C46572A1B46E33F001AB85F /* DJRefresh.m */; };
+		5C4657351B46E33F001AB85F /* DJRefreshBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C46572D1B46E33F001AB85F /* DJRefreshBottomView.m */; };
+		5C4657361B46E33F001AB85F /* DJRefreshTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4657301B46E33F001AB85F /* DJRefreshTopView.m */; };
+		5C4657371B46E33F001AB85F /* DJRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C4657321B46E33F001AB85F /* DJRefreshView.m */; };
 		5CB0E61B1B3B03580029691D /* SampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CB0E61A1B3B03580029691D /* SampleViewController.m */; };
 		5CB0E6231B3B06D60029691D /* pull_loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB0E61D1B3B06D60029691D /* pull_loading@2x.png */; };
 		5CB0E6241B3B06D60029691D /* pull_loading@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB0E61E1B3B06D60029691D /* pull_loading@3x.png */; };
@@ -21,14 +26,19 @@
 		5CCB0DF01B3AFD980046536B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCB0DEE1B3AFD980046536B /* Main.storyboard */; };
 		5CCB0DF21B3AFD980046536B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCB0DF11B3AFD980046536B /* Images.xcassets */; };
 		5CCB0DF51B3AFD980046536B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CCB0DF31B3AFD980046536B /* LaunchScreen.xib */; };
-		5CCB0E151B3AFF0D0046536B /* DJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0E0C1B3AFF0D0046536B /* DJRefresh.m */; };
-		5CCB0E161B3AFF0D0046536B /* DJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5CCB0E0E1B3AFF0D0046536B /* DJRefresh.bundle */; };
-		5CCB0E171B3AFF0D0046536B /* DJRefreshBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0E101B3AFF0D0046536B /* DJRefreshBottomView.m */; };
-		5CCB0E181B3AFF0D0046536B /* DJRefreshTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0E121B3AFF0D0046536B /* DJRefreshTopView.m */; };
-		5CCB0E191B3AFF0D0046536B /* DJRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB0E141B3AFF0D0046536B /* DJRefreshView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C4657281B46E33F001AB85F /* DJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DJRefresh.bundle; sourceTree = "<group>"; };
+		5C4657291B46E33F001AB85F /* DJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefresh.h; sourceTree = "<group>"; };
+		5C46572A1B46E33F001AB85F /* DJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefresh.m; sourceTree = "<group>"; };
+		5C46572C1B46E33F001AB85F /* DJRefreshBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshBottomView.h; sourceTree = "<group>"; };
+		5C46572D1B46E33F001AB85F /* DJRefreshBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshBottomView.m; sourceTree = "<group>"; };
+		5C46572E1B46E33F001AB85F /* DJRefreshMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshMacro.h; sourceTree = "<group>"; };
+		5C46572F1B46E33F001AB85F /* DJRefreshTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshTopView.h; sourceTree = "<group>"; };
+		5C4657301B46E33F001AB85F /* DJRefreshTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshTopView.m; sourceTree = "<group>"; };
+		5C4657311B46E33F001AB85F /* DJRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshView.h; sourceTree = "<group>"; };
+		5C4657321B46E33F001AB85F /* DJRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshView.m; sourceTree = "<group>"; };
 		5CB0E6191B3B03580029691D /* SampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleViewController.h; sourceTree = "<group>"; };
 		5CB0E61A1B3B03580029691D /* SampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleViewController.m; sourceTree = "<group>"; };
 		5CB0E61D1B3B06D60029691D /* pull_loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pull_loading@2x.png"; sourceTree = "<group>"; };
@@ -51,16 +61,6 @@
 		5CCB0DEF1B3AFD980046536B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5CCB0DF11B3AFD980046536B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		5CCB0DF41B3AFD980046536B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		5CCB0E0B1B3AFF0D0046536B /* DJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefresh.h; sourceTree = "<group>"; };
-		5CCB0E0C1B3AFF0D0046536B /* DJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefresh.m; sourceTree = "<group>"; };
-		5CCB0E0E1B3AFF0D0046536B /* DJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DJRefresh.bundle; sourceTree = "<group>"; };
-		5CCB0E0F1B3AFF0D0046536B /* DJRefreshBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshBottomView.h; sourceTree = "<group>"; };
-		5CCB0E101B3AFF0D0046536B /* DJRefreshBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshBottomView.m; sourceTree = "<group>"; };
-		5CCB0E111B3AFF0D0046536B /* DJRefreshTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshTopView.h; sourceTree = "<group>"; };
-		5CCB0E121B3AFF0D0046536B /* DJRefreshTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshTopView.m; sourceTree = "<group>"; };
-		5CCB0E131B3AFF0D0046536B /* DJRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshView.h; sourceTree = "<group>"; };
-		5CCB0E141B3AFF0D0046536B /* DJRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshView.m; sourceTree = "<group>"; };
-		5CE272021B3BA9A4007D50D3 /* DJRefreshMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DJRefreshMacro.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +74,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C4657271B46E33F001AB85F /* DJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				5C4657291B46E33F001AB85F /* DJRefresh.h */,
+				5C46572A1B46E33F001AB85F /* DJRefresh.m */,
+				5C4657281B46E33F001AB85F /* DJRefresh.bundle */,
+				5C46572B1B46E33F001AB85F /* DJRefreshView */,
+			);
+			name = DJRefresh;
+			path = ../../DJRefresh;
+			sourceTree = "<group>";
+		};
+		5C46572B1B46E33F001AB85F /* DJRefreshView */ = {
+			isa = PBXGroup;
+			children = (
+				5C46572C1B46E33F001AB85F /* DJRefreshBottomView.h */,
+				5C46572D1B46E33F001AB85F /* DJRefreshBottomView.m */,
+				5C46572E1B46E33F001AB85F /* DJRefreshMacro.h */,
+				5C46572F1B46E33F001AB85F /* DJRefreshTopView.h */,
+				5C4657301B46E33F001AB85F /* DJRefreshTopView.m */,
+				5C4657311B46E33F001AB85F /* DJRefreshView.h */,
+				5C4657321B46E33F001AB85F /* DJRefreshView.m */,
+			);
+			path = DJRefreshView;
+			sourceTree = "<group>";
+		};
 		5CB0E61C1B3B06D60029691D /* CustomRefreshView */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,7 +145,7 @@
 		5CCB0DE31B3AFD980046536B /* DJRefreshSample */ = {
 			isa = PBXGroup;
 			children = (
-				5CCB0E0A1B3AFF0D0046536B /* DJRefresh */,
+				5C4657271B46E33F001AB85F /* DJRefresh */,
 				5CB0E61C1B3B06D60029691D /* CustomRefreshView */,
 				5CCB0DE81B3AFD980046536B /* AppDelegate.h */,
 				5CCB0DE91B3AFD980046536B /* AppDelegate.m */,
@@ -141,32 +167,6 @@
 				5CCB0DE61B3AFD980046536B /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5CCB0E0A1B3AFF0D0046536B /* DJRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				5CCB0E0B1B3AFF0D0046536B /* DJRefresh.h */,
-				5CCB0E0C1B3AFF0D0046536B /* DJRefresh.m */,
-				5CCB0E0D1B3AFF0D0046536B /* DJRefreshView */,
-			);
-			name = DJRefresh;
-			path = ../../DJRefresh;
-			sourceTree = "<group>";
-		};
-		5CCB0E0D1B3AFF0D0046536B /* DJRefreshView */ = {
-			isa = PBXGroup;
-			children = (
-				5CCB0E0E1B3AFF0D0046536B /* DJRefresh.bundle */,
-				5CCB0E131B3AFF0D0046536B /* DJRefreshView.h */,
-				5CCB0E141B3AFF0D0046536B /* DJRefreshView.m */,
-				5CCB0E111B3AFF0D0046536B /* DJRefreshTopView.h */,
-				5CCB0E121B3AFF0D0046536B /* DJRefreshTopView.m */,
-				5CCB0E0F1B3AFF0D0046536B /* DJRefreshBottomView.h */,
-				5CCB0E101B3AFF0D0046536B /* DJRefreshBottomView.m */,
-				5CE272021B3BA9A4007D50D3 /* DJRefreshMacro.h */,
-			);
-			path = DJRefreshView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,11 +227,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CCB0DF01B3AFD980046536B /* Main.storyboard in Resources */,
-				5CCB0E161B3AFF0D0046536B /* DJRefresh.bundle in Resources */,
 				5CB0E6251B3B06D60029691D /* pull_refresh@2x.png in Resources */,
 				5CB0E6231B3B06D60029691D /* pull_loading@2x.png in Resources */,
 				5CB0E6261B3B06D60029691D /* pull_refresh@3x.png in Resources */,
 				5CCB0DF51B3AFD980046536B /* LaunchScreen.xib in Resources */,
+				5C4657331B46E33F001AB85F /* DJRefresh.bundle in Resources */,
 				5CCB0DF21B3AFD980046536B /* Images.xcassets in Resources */,
 				5CB0E6241B3B06D60029691D /* pull_loading@3x.png in Resources */,
 			);
@@ -244,17 +244,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CCB0E181B3AFF0D0046536B /* DJRefreshTopView.m in Sources */,
-				5CCB0E171B3AFF0D0046536B /* DJRefreshBottomView.m in Sources */,
+				5C4657361B46E33F001AB85F /* DJRefreshTopView.m in Sources */,
+				5C4657351B46E33F001AB85F /* DJRefreshBottomView.m in Sources */,
 				5CB0E6301B3B170F0029691D /* WebViewController.m in Sources */,
 				5CB0E6271B3B06D60029691D /* SampleRefreshView.m in Sources */,
 				5CB0E61B1B3B03580029691D /* SampleViewController.m in Sources */,
+				5C4657341B46E33F001AB85F /* DJRefresh.m in Sources */,
 				5CB0E62A1B3B0AEF0029691D /* TableViewController.m in Sources */,
 				5CCB0DEA1B3AFD980046536B /* AppDelegate.m in Sources */,
 				5CCB0DE71B3AFD980046536B /* main.m in Sources */,
-				5CCB0E191B3AFF0D0046536B /* DJRefreshView.m in Sources */,
+				5C4657371B46E33F001AB85F /* DJRefreshView.m in Sources */,
 				5CB0E62D1B3B14120029691D /* CollectionViewController.m in Sources */,
-				5CCB0E151B3AFF0D0046536B /* DJRefresh.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
