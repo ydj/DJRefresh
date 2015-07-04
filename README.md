@@ -1,9 +1,13 @@
 DJRefresh
 ==============
 
-[DJRefresh]('https://github.com/ydj/DJRefresh') 是一个下拉刷新，上拉加载更多的组件
-系统支持`iOS6+`
+[DJRefresh]('https://github.com/ydj/DJRefresh') 是一个下拉刷新，上拉加载更多的组件,
 支持横竖屏切换，支持自定义下拉`View`和加载`View`，继承自`UIScrollView`的控件都可以使用,支持`UIWebView`下拉刷新
+
+```
+platform :ios, '6.0'
+pod 'DJRefresh', '~> 1.0.5'
+```
 
 ![](/example.gif)
 
