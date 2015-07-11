@@ -76,14 +76,18 @@
 - (void)reset{
     [super reset];
     
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _promptLabel.text=kDJRefreshBottomTypeDefine;
+        if ([_activityIndicatorView isAnimating])
+        {
+            [_activityIndicatorView stopAnimating];
+        }
+    });
     
-    _promptLabel.text=kDJRefreshBottomTypeDefine;
-    if ([_activityIndicatorView isAnimating])
-    {
-        [_activityIndicatorView stopAnimating];
-    }
-    
-    
+}
+
+- (void)didDisengageRefresh{
+    [self reset];
 }
 
 ///松开可刷新
@@ -96,8 +100,11 @@
 ///开始刷新
 - (void)startRefreshing{
     [super startRefreshing];
-    _promptLabel.text=kDJRefreshBottomTypeRefreshing;
-    [self.activityIndicatorView startAnimating];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _promptLabel.text=kDJRefreshBottomTypeRefreshing;
+        [self.activityIndicatorView startAnimating];
+    });
+   
 }
 
 

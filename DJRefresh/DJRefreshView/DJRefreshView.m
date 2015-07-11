@@ -59,7 +59,7 @@
 }
 ///松开返回
 - (void)didDisengageRefresh{
-    [self reset];
+    _refreshViewType=DJRefreshViewTypeDefine;
 }
 ///开始刷新
 - (void)startRefreshing{
@@ -68,7 +68,7 @@
 }
 ///结束
 - (void)finishRefreshing{
-    [self reset];
+    _refreshViewType=DJRefreshViewTypeDefine;
 }
 
 

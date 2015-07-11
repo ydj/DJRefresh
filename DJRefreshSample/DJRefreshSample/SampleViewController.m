@@ -9,6 +9,8 @@
 #import "SampleViewController.h"
 #import "DJRefresh.h"
 #import "SampleRefreshView.h"
+#import "DJRefreshProgressView.h"
+#import "TableViewController.h"
 
 @interface SampleViewController ()<UITableViewDataSource,UITableViewDelegate,DJRefreshDelegate>
 
@@ -28,23 +30,21 @@
     
     self.title=@"DJRefresh";
     
-    _dataList=@[@"tableView",@"collectionView",@"WebView"];
+    _dataList=@[@"tableView",@"collectionView",@"WebView",@"自定义下拉进度View"];
     
+    /*
     SampleRefreshView *refreshView=[[SampleRefreshView alloc] initWithFrame:CGRectZero];
     [refreshView didDraggingProgressCompletionBlock:^(DJRefreshView *refreshView, CGFloat progress, NSDictionary *info) {
        // NSLog(@"拉动进度%.2f",progress);
     }];
+    */
     
-    
-    _refresh=[DJRefresh refreshWithScrollView:self.tableView];
+    self.refresh=[DJRefresh refreshWithScrollView:self.tableView];
     _refresh.delegate=self;
     _refresh.topEnabled=YES;
-    _refresh.topRefreshView=refreshView;
-//    _refresh.autoRefreshTop=YES;
+    _refresh.autoRefreshTop=YES;
 
-//    [_refresh registerClassForTopView:[SampleRefreshView class]];
-    
-    
+    [_refresh registerClassForTopView:[SampleRefreshView class]];
     
     
 }
@@ -75,7 +75,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.row==0) {
+    if (indexPath.row==0 || indexPath.row==3) {
         [self performSegueWithIdentifier:@"pushToTable" sender:indexPath];
     }else if (indexPath.row==1){
         [self performSegueWithIdentifier:@"pushToCollection" sender:indexPath];
@@ -85,6 +85,27 @@
     
     
 }
+
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+
+    if ([segue.identifier isEqual:@"pushToTable"]) {
+        
+        NSIndexPath *indexPath=sender;
+        if (indexPath.row==3) {
+            TableViewController *tableViewController=[segue destinationViewController];
+            
+            tableViewController.type=eRefreshTypeProgress;
+            
+        }
+        
+        
+    }
+    
+    
+    
+}
+
 
 
 

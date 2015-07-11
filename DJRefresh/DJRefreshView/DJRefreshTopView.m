@@ -101,36 +101,49 @@
 - (void)reset{
     [super reset];
     
-    _imageView.hidden=NO;
-    [UIView animateWithDuration:0.25 animations:^{
-        _imageView.transform=CGAffineTransformIdentity;
-    }];
-    if ([_activityIndicatorView isAnimating])
-    {
-        [_activityIndicatorView stopAnimating];
-    }
-    _promptLabel.text=kDJRefreshTopTypeDefine;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _imageView.hidden=NO;
+        [UIView animateWithDuration:0.25 animations:^{
+            _imageView.transform=CGAffineTransformIdentity;
+        }];
+        if ([_activityIndicatorView isAnimating])
+        {
+            [_activityIndicatorView stopAnimating];
+        }
+        _promptLabel.text=kDJRefreshTopTypeDefine;
+    });
+    
 }
 
 ///松开可刷新
 - (void)canEngageRefresh{
     [super canEngageRefresh];
     
-    _promptLabel.text=kDJRefreshTopTypeCanRefresh;
-    [UIView animateWithDuration:0.25 animations:^{
-        _imageView.transform=CGAffineTransformMakeRotation(M_PI);
-    }];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _promptLabel.text=kDJRefreshTopTypeCanRefresh;
+        [UIView animateWithDuration:0.25 animations:^{
+            _imageView.transform=CGAffineTransformMakeRotation(M_PI);
+        }];
+    });
+    
+}
+
+- (void)didDisengageRefresh{
+    [self reset];
 }
 
 ///开始刷新
 - (void)startRefreshing{
     [super startRefreshing];
     
-    _imageView.hidden=YES;
-    _imageView.transform=CGAffineTransformIdentity;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _promptLabel.text=kDJRefreshTopTypeRefreshing;
+        _imageView.transform=CGAffineTransformIdentity;
+        [_activityIndicatorView startAnimating];
+        _imageView.hidden=YES;
 
-    [_activityIndicatorView startAnimating];
-    _promptLabel.text=kDJRefreshTopTypeRefreshing;
+    });
+   
 }
 
 

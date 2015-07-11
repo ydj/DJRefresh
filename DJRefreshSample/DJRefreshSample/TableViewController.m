@@ -8,6 +8,8 @@
 
 #import "TableViewController.h"
 #import "DJRefresh.h"
+#import "DJRefreshProgressView.h"
+
 
 @interface TableViewController ()<DJRefreshDelegate,UITableViewDelegate,UITableViewDataSource>
 
@@ -34,10 +36,17 @@
     _refresh.topEnabled=YES;
     _refresh.bottomEnabled=YES;
     
+    if (_type==eRefreshTypeProgress) {
+        [_refresh registerClassForTopView:[DJRefreshProgressView class]];
+    }
     
+    
+    [_refresh startRefreshingDirection:DJRefreshDirectionTop animation:YES];
     
     
 }
+
+
 
 - (void)refresh:(DJRefresh *)refresh didEngageRefreshDirection:(DJRefreshDirection)direction{
     

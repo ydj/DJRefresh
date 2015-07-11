@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C232ACE1B518CED0013F7C9 /* DJRefreshProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C232ACD1B518CED0013F7C9 /* DJRefreshProgressView.m */; };
 		5C4657331B46E33F001AB85F /* DJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C4657281B46E33F001AB85F /* DJRefresh.bundle */; };
 		5C4657341B46E33F001AB85F /* DJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C46572A1B46E33F001AB85F /* DJRefresh.m */; };
 		5C4657351B46E33F001AB85F /* DJRefreshBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C46572D1B46E33F001AB85F /* DJRefreshBottomView.m */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C232ACC1B518CED0013F7C9 /* DJRefreshProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefreshProgressView.h; sourceTree = "<group>"; };
+		5C232ACD1B518CED0013F7C9 /* DJRefreshProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefreshProgressView.m; sourceTree = "<group>"; };
 		5C4657281B46E33F001AB85F /* DJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DJRefresh.bundle; sourceTree = "<group>"; };
 		5C4657291B46E33F001AB85F /* DJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJRefresh.h; sourceTree = "<group>"; };
 		5C46572A1B46E33F001AB85F /* DJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJRefresh.m; sourceTree = "<group>"; };
@@ -109,6 +112,8 @@
 				5CB0E6201B3B06D60029691D /* pull_refresh@3x.png */,
 				5CB0E6211B3B06D60029691D /* SampleRefreshView.h */,
 				5CB0E6221B3B06D60029691D /* SampleRefreshView.m */,
+				5C232ACC1B518CED0013F7C9 /* DJRefreshProgressView.h */,
+				5C232ACD1B518CED0013F7C9 /* DJRefreshProgressView.m */,
 			);
 			path = CustomRefreshView;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				5CB0E61B1B3B03580029691D /* SampleViewController.m in Sources */,
 				5C4657341B46E33F001AB85F /* DJRefresh.m in Sources */,
 				5CB0E62A1B3B0AEF0029691D /* TableViewController.m in Sources */,
+				5C232ACE1B518CED0013F7C9 /* DJRefreshProgressView.m in Sources */,
 				5CCB0DEA1B3AFD980046536B /* AppDelegate.m in Sources */,
 				5CCB0DE71B3AFD980046536B /* main.m in Sources */,
 				5C4657371B46E33F001AB85F /* DJRefreshView.m in Sources */,
