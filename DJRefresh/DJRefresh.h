@@ -32,16 +32,16 @@
  */
 typedef enum {
     DJRefreshingDirectionNone    = 0,
-    DJRefreshingDirectionTop     = 1 << 0,
-    DJRefreshingDirectionBottom  = 1 << 1
+    DJRefreshingDirectionTop     = 1,
+    DJRefreshingDirectionBottom  = 2,
 } DJRefreshingDirections;
 
 /**
  *  指定回调方向
  */
 typedef enum {
-    DJRefreshDirectionTop = 0,
-    DJRefreshDirectionBottom
+    DJRefreshDirectionTop = 1,
+    DJRefreshDirectionBottom = 2,
 } DJRefreshDirection;
 
 @class DJRefresh,DJRefreshView;
@@ -144,6 +144,11 @@ typedef void(^DJRefreshCompletionBlock)(DJRefresh * refresh,DJRefreshDirection d
  *  @param animation 是否动画
  */
 - (void)finishRefreshingDirection:(DJRefreshDirection)direction animation:(BOOL)animation;
+
+/**
+ *  完成刷新
+ */
+- (void)finishRefreshing;
 
 @end
 

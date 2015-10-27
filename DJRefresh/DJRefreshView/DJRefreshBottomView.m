@@ -107,6 +107,11 @@
    
 }
 
+- (void)finishRefreshing{
+    [super finishRefreshing];
+    
+    [self reset];
+}
 
 
 

@@ -523,7 +523,15 @@
 }
 
 
-
+- (void)finishRefreshing{
+    
+    if (self.refreshingDirection == DJRefreshingDirectionTop) {
+        [self finishRefreshingDirection:DJRefreshDirectionTop animation:YES];
+    }else if (self.refreshingDirection == DJRefreshingDirectionBottom){
+        [self finishRefreshingDirection:DJRefreshDirectionBottom animation:YES];
+    }
+    
+}
 
 
 @end
