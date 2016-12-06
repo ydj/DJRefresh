@@ -129,6 +129,7 @@
 }
 
 - (void)didDisengageRefresh{
+    [super didDisengageRefresh];
     [self reset];
 }
 

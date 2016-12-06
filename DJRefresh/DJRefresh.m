@@ -363,6 +363,8 @@
     if (_topRefreshView!=topRefreshView) {
         [_topRefreshView removeFromSuperview];
     }
+    [self registerClassForTopView:[topRefreshView class]];
+    
     _topRefreshView=topRefreshView;
 
 }
@@ -371,6 +373,7 @@
     if (_bottomRefreshView!=bottomRefreshView) {
         [_bottomRefreshView removeFromSuperview];
     }
+    [self registerClassForBottomView:[bottomRefreshView class]];
     _bottomRefreshView=bottomRefreshView;
 }
 

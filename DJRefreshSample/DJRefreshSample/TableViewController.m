@@ -36,6 +36,8 @@
     _refresh.topEnabled=YES;
     _refresh.bottomEnabled=YES;
     
+//    _refresh.topRefreshView.backgroundColor = [UIColor redColor];
+    
     if (_type==eRefreshTypeProgress) {
         [_refresh registerClassForTopView:[DJRefreshProgressView class]];
     }
